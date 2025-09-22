@@ -1,54 +1,39 @@
-let arr = [2, 4, 8, 16];
-
-//console.log(arr.length)
-
-function sum(info){
+function aggregateElements(arr){
 
     let sum = 0;
 
-    for(let i = 0; i < info.length; i++){
+    for(let i = 0; i < arr.length; i++){
 
-    sum += info[i];
-
-   }
-
-   return sum;
-   //console.log(sum)
-}
-
-sum(arr)
-
-function inverse(info){
-
-    
-    let sumInv = 0;
-
-    for(let i = 0; i < info.length; i++){
-
-    sumInv += 1/info[i];
+    sum += arr[i];
 
    }
 
-    return sumInv;
-    //console.log(sumInv)
+   console.log(sum)
 
-}
 
-inverse(arr)
+   let sumInv = 0;
 
-function concat(info){
+    for(let i = 0; i < arr.length; i++){
 
-    let line = "";
+    sumInv += 1/arr[i];
 
-    for(let i = 0; i < info.length; i++){
+   }
 
-        line += info[i];
+   console.log(sumInv);
+
+   let line = "";
+
+    for(let i = 0; i < arr.length; i++){
+
+        line += arr[i];
 
     }
 
-    return line;
-    //console.log(line)
+    console.log(line);
 
+}
+
+aggregateElements([2, 4, 8, 16])
 
 }
 
