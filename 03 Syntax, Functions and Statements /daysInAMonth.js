@@ -1,11 +1,11 @@
-function daysInAMonth(month, year) {
+function solve(month, year){
 
-    let info = new Date(year, month, 0);
+let info = new Date(month, year, 0);
 
-    let date = info.getDate();
+let days = info.getDate();
 
-    return date
+console.log(days);
 
 }
 
-daysInAMonth(11, 2021)
+solve(11, 2012)
