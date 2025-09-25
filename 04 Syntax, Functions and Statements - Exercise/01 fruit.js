@@ -1,10 +1,10 @@
 function fruit(fruit, weight, price){
 
-    let wKg = (weight/1000).toFixed(2);
+    let wKg = weight/1000;
 
-    let sum = (wKg*price).toFixed(2);       
+    let sum = wKg*price;       
 
-    console.log(`I need $${sum} to buy ${wKg} kilograms ${fruit}.`);
+    console.log(`I need $${sum.toFixed(2)} to buy ${wKg.toFixed(2)} kilograms ${fruit}.`);
 
     
 
