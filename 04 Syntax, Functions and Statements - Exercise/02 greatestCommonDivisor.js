@@ -1,28 +1,14 @@
-function greatestCommonDivisor(num1, num2){
+function GCD(num1, num2){
 
-    let num = 0;
+    let gcd = num1 % num2;
 
-    if(num1 > num2){
-        num = num1;
-    }else {
-        num = num2
+    while( gcd !== 0){
+
+        num1 = num2;
+        num2 = gcd;
+        gcd = num1 % num2;
     }
 
-    let arr = [];
-
-    for(let i = 0; i < num+1; i++){
-
-        if(num1 % i== 0 && num2 % i== 0){
-
-            arr.push(i)
-
-        }
-    }
-
-    let max = Math.max(arr);
-
-    console.log(max)
+    console.log(num2);
 
 }
-
-greatestCommonDivisor(15, 5)
