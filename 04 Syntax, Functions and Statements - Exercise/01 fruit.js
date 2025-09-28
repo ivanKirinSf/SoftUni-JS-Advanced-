@@ -1,13 +1,11 @@
-function fruit(fruit, weight, price){
+function fruit(type, grams, price){
 
-    let wKg = weight/1000;
+    let kg = grams/1000;
 
-    let sum = wKg*price;       
+    let cost = kg*price;
 
-    console.log(`I need $${sum.toFixed(2)} to buy ${wKg.toFixed(2)} kilograms ${fruit}.`);
-
-    
+    console.log(`I need $${cost.toFixed(2)} to buy ${kg.toFixed(2)} kilograms ${type}.`)
 
 }
 
-fruit('orange', 2500, 1.80);
+fruit('orange', 2500, 1.80)
