@@ -1,11 +1,11 @@
-function solve(month, year){
+function days(month, year){
 
-let info = new Date(month, year, 0);
+    let date = new Date(year, month, 0);
 
-let days = info.getDate();
+    let days = date.getDate();
 
-console.log(days);
+    console.log(days)
 
 }
 
-solve(11, 2012)
+days(2, 2021)
