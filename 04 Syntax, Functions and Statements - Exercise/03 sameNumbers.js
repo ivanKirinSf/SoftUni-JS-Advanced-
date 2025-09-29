@@ -1,37 +1,16 @@
-function sameNumbers(input){
+function gcd(num1, num2){
 
-    let str = input.toString();
+    let gcd = num1 % num2;
 
-    let same = true;
+    while(gcd !== 0){
 
-    let sum = 0; 
-
-    for(let i = 0; i<str.length; i++){
-
-        let numA = str[i];
-
-        let numB = str[i+1];
-
-        if(numA !== numB && i+1 < str.length){
-
-           same = false;
-
-           break;
-
-        }
+        num1 = num2;
+        num2 = gcd;
+        gcd = num1 % num2;        
     }
 
-    for(let j = 0; j < str.length; j++){
-
-        let num = Number(str[j]);
-
-        sum += num;
-
-    }
-
-    console.log(same)
-    console.log(sum)
+    console.log(num2)
 
 }
 
-sameNumbers(2222222)
+gcd(2154, 458)
