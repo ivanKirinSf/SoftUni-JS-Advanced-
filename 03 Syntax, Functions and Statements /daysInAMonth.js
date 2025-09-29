@@ -1,11 +1,11 @@
-function days(month, year){
+function daysOfMonth(month, year){
 
-    let date = new Date(year, month, 0);
+    let info = new Date(year, month, 0);
 
-    let days = date.getDate();
+    let days = info.getDate();
 
     console.log(days)
 
 }
 
-days(2, 2021)
+daysOfMonth(3, 2021)
