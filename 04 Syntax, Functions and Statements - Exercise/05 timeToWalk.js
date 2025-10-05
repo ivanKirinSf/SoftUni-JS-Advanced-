@@ -4,10 +4,22 @@ function timeToWalk(steps, footprint, speed){
 
     let distanceInKm = distanceInMeters/1000;
 
-    let time = distanceInKm/speed;
+    let breaks = Math.floor((distanceInKm/0.5));
 
-    let res = Math.floor(time*60);
+    let breaksInSec = breaks*60;
+
+    let timeInSec = Math.floor((distanceInKm/speed)*60*60);
+
+    //let seconds = Math.floor(time*60) + breaksCounter*60;
+
+    let finalTimeInSec = timeInSec + breaksInSec;
+
+    let hours = Math.floor(finalTimeInSec/3600);
+
+    let minutes = Math.floor((finalTimeInSec%3600)/60);
+
+    let seconds = Math.ceil(finalTimeInSec%60);
+
+    console.log(`${hours}:${minutes}:${seconds}`);
     
-    console.log(res)
-
 }
