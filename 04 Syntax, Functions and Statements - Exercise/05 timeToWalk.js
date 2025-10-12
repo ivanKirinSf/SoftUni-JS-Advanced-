@@ -1,21 +1,32 @@
-function getTimeToUniversity(steps, footprintLength, speedKmH) {
+function timeToWalk(steps, footprints, speed){
 
-    let distMeters = steps*footprintLength;
+   let lengthInM = steps*footprints;
 
-    let speedInMperSec = (speedKmH*1000)/3600;
+   let speedInM = speed*1000;
 
-    let breaks = (Math.floor(distMeters/500))*60;
+   let speedInSec = speedInM / 3600;
 
-    //console.log(breaks)
+   let timeDis = Math.round(lengthInM / speedInSec);
 
-    let timeMSec = new Date (Math.round(distMeters/speedInMperSec + breaks)*1000);
+   let timeDisMlSec = timeDis*1000;
 
-    let finalTime = timeMSec.toISOString();
+   let breaks = Math.floor(lengthInM/500);
 
-    let time = finalTime.substring(11, 19);
+   let breaksTime = breaks*60*1000;
 
-    //console.log(finalTime)
+   let allTime = timeDisMlSec+breaksTime;
 
-    console.log(time)
+   let res = new Date(allTime);
+
+   let final = res.toISOString();
+
+   let time = final.substr(11, 8)
+
+
+
+   console.log(time)
+
 
 }
+
+timeToWalk(2564, 0.70, 5.5)
