@@ -7,5 +7,6 @@ function previousDay(year, month, date){
     console.log(`${currentDate.getFullYear()}-${currentDate.getMonth()+1}-${currentDate.getDate()}`)
 
 
-
 }
+
+previousDay(2024, 5, 1)
