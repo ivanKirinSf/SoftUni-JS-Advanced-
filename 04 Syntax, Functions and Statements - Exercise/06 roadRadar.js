@@ -1,41 +1,24 @@
-function roadRadar(a, b){
+function cookingByNum(arg, ...params){
 
-    let speedRange = {
+    let programs = {
 
-        "motorway" : 130,
-        "interstate" : 90,
-        "city" : 50,
-        "residential" : 20
-
-    }
-
-    let currentSpeed = Number(a);
-    let location = b
-
-    if(currentSpeed > speedRange[location]){
-
-        let diff = currentSpeed - speedRange[location];
-
-        console.log(`The speed is ${diff} km/h faster than the allowed speed of ${speedRange[location]} - ${statusBar(diff)}`);
-
-    }else {
-
-        console.log(`Driving ${currentSpeed} km/h in a ${speedRange[location]} zone`);
-
-    }
-
-    function statusBar(info){
-
-        if( info <= 20 ){
-            return "speeding"
-        }else if( info <= 40 ){
-            return "excessive speeding"
-        }
-
-        return "reckless driving"
-
+        "chop" : (num) => num/2,
+        "dice" : (num) => Math.sqrt(num),
+        "spice": (num) => num+1,
+        "bake": (num) => num*3,
+        "fillet": (num) => num*0.8,
     }
 
 
 
+    let num = Number(arg);
+
+    for(let op of params){
+
+        console.log(programs[op])
+
+        num = programs[op](num);
+
+        console.log(num)
+    }
 }
