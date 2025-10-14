@@ -4,40 +4,42 @@ function roadRadar(a, b){
 
         "motorway" : 130,
         "interstate" : 90,
-        "city" : 50,
-        "residential" : 20,
+        "city": 50,
+        "residential": 20,
 
     }
 
-    
+    let speed = Number(a);
+    let location = b;
+    //console.log(b)
 
-    let currentSpeed = Number(a);
-    let area = b;
+    if(speed > speedLimit[location]){
 
-    
-    if (currentSpeed > speedLimit[area]){
+        let diff = speed - speedLimit[location];
 
-        let diff = currentSpeed - speedLimit[area];
+        console.log(`The speed is ${diff} km/h faster than the allowed speed of ${speedLimit[location]} - ${statusBar(diff)}`)
 
-        console.log(`The speed is ${diff} km/h faster than the allowed speed of ${speedLimit[area]} - ${calculatesStatus(diff)}`);
+    }else {
 
-    }else{
-
-        console.log(`Driving ${currentSpeed} km/h in a ${speedLimit[area]} zone`);
-
+        console.log(`Driving ${speed} km/h in a ${speedLimit[location]} zone`)
     }
 
+    function statusBar (info){
 
-    function calculatesStatus(speedDiff){
+        if(info <= 20){
 
-        if(speedDiff <= 20){
-            return "speeding"
-        }else if(speedDiff <= 40){
-            return "excessive speeding"
+            return "speeding";
+
+        }else if(info <= 40) {
+
+            return "excessive speeding";
+
         }
 
-        return "reckless driving"
+        return "reckless driving";
 
     }
 
 }
+
+roadRadar(200, 'motorway')
