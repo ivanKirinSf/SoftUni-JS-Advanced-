@@ -1,22 +1,23 @@
 function cookingByNum(arg, ...params){
 
-    let programs = {
+ let programs = {
 
-        "chop" : (num) => num/2,
-        "dice" : (num) => Math.sqrt(num),
-        "spice": (num) => num+1,
-        "bake": (num) => num*3,
-        "fillet": (num) => num*0.8,
-    }
+    "chop" : (num) => num/2,
+    "dice" : (num) => Math.sqrt(num),
+    "spice" : (num) => num +1,
+    "bake": (num) => num*3,
+    "fillet" : (num) => num*0.8,
 
-    let num = Number(arg);
+ }
 
-    for(let op of params){
+ let num = Number(arg);
 
-        console.log(programs[op])
+ for(let op of params){
 
-        num = programs[op](num);
+    num = programs[op](num);
 
-        console.log(num)
-    }
+    console.log(num)
+
+ }
+
 }
