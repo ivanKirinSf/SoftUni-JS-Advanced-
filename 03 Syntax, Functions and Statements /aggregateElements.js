@@ -34,8 +34,3 @@ function aggregateElements(arr){
 }
 
 aggregateElements([2, 4, 8, 16])
-
-}
-
-concat(arr)
-
