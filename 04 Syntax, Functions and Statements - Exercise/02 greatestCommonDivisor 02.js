@@ -1,0 +1,23 @@
+function GCD(num1, num2){
+
+   let min = Math.min(num1, num2);
+
+   let divisor = 0;
+
+   //console.log(min)
+
+   for(let i = 0; i<= min; i++) {
+
+      if(num1 % i === 0 && num2 % i === 0){
+
+         divisor = i;        
+
+      }
+
+   } 
+
+   console.log(divisor)
+
+}
+
+GCD(2154, 458)
