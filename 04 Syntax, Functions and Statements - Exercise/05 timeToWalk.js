@@ -1,32 +1,21 @@
-function timeToWalk(steps, footprints, speed){
+function timeToWalk(steps, footprint, speed){
 
-   let lengthInM = steps*footprints;
+    let distanceInM = steps*footprint;
 
-   let speedInM = speed*1000;
+    let speedInMperSec = (speed*1000)/3600;
 
-   let speedInSec = speedInM / 3600;
+    let stops = Math.floor(distanceInM/500)*60;
 
-   let timeDis = Math.round(lengthInM / speedInSec);
+    let timeInMSec = (Math.round(distanceInM/speedInMperSec+stops)*1000);
 
-   let timeDisMlSec = timeDis*1000;
+    let time = new Date(timeInMSec)//.slice(10, 18);
 
-   let breaks = Math.floor(lengthInM/500);
+    let str = time.toISOString()
 
-   let breaksTime = breaks*60*1000;
+    let sliced = str.slice(11, 19)
 
-   let allTime = timeDisMlSec+breaksTime;
-
-   let res = new Date(allTime);
-
-   let final = res.toISOString();
-
-   let time = final.substr(11, 8)
-
-
-
-   console.log(time)
-
+    console.log(sliced)
 
 }
 
-timeToWalk(2564, 0.70, 5.5)
+timeToWalk( 4000, 0.60, 5 )
