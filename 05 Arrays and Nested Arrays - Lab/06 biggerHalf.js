@@ -1,22 +1,22 @@
-function biggerHalf(arr){
+function biggerHalf(str){
 
-    let sortedArr = arr.sort((a,b)=> a - b);
+    let sorted = str.sort((a,b) => a - b);
 
-    let mid = Math.floor(sortedArr.length / 2 );
+    let mid = Math.floor(sorted.length / 2);
 
-    let output = [];
+    let res = []
 
-    for(let i = mid; i < sortedArr.length; i++){
 
-        let curr = sortedArr[i];
+    for(let i = mid; i < str.length; i++){
 
-        output.push(curr);
+        let curr = sorted[i];
 
+        res.push(curr);
 
     }
 
-    console.log(output)
-
+    return res
+    
 }
 
 biggerHalf([4, 7, 2, 5])
