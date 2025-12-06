@@ -1,18 +1,12 @@
 let myArr = [30, 50, 40, 10, 70];
 
-let result = 0;
-
-let reduced = myArr.reduce(total, element, indexedDB, arr) => {
-
-    
-    if(index <= myArr.length-1){
-        result = total + element
+let average = myArr.reduce(( total , element , index , arr) => {
+    total += element;
+    if(index === arr.length-1){
+        return total/arr.length;
     }else{
-
-        total
-
+        return total
     }
+} )
 
-}
-
-console.log(reduced)
+console.log(average)
