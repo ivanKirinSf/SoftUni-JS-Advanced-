@@ -1,21 +1,24 @@
 function proOddPos(arr){
 
-    let filtered = arr.filter((a, i) => i % 2 !== 0);
+    let oddNums = [];
 
-    let doubled = [];
+    
 
-    for(let el of filtered){
+    for(let i = 0; i < arr.length; i++){
 
-        let newEl = el*2;
+        if( i % 2 !== 0){
 
-        doubled.push(newEl)
+            oddNums.push(arr[i]);
 
+        }
     }
 
-    let reversed = doubled.reverse();
+    let double = oddNums.map(n => n*2);
 
-    return reversed.join(" ");
+    let reversed = double.reverse(double);
+
+    return reversed.join(" ");    
 
 }
 
-proOddPos([10, 15, 20, 25])
+proOddPos([3, 0, 10, 4, 7, 3])
