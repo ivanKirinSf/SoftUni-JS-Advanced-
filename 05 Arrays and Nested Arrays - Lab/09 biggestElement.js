@@ -1,25 +1,29 @@
 function biggestElement(arr){
 
-    let biggestEl = 0;
+    let biggest = 0;
 
-    let sortedA = arr[0].sort((a, b) => a-b);
+    let newArr = [];
 
-    let AbigEl = sortedA.pop();
+   for(let el of arr){
 
-    let sortedB = arr[1].sort((a, b) => a-b);
+       let sorted = el.sort((a, b) => a-b);
 
-    let BbigEl = sortedB.pop();
+       let bigEl = sorted.pop();
 
-    if(AbigEl > BbigEl){
+       newArr.push(bigEl);      
 
-        biggestEl = AbigEl;
+   }
 
-    }else{
+   let sortedNew = newArr.sort((a, b)=> a-b);
 
-        biggestEl = BbigEl;
+   biggest = sortedNew.pop();
 
-    }
-
-    return biggestEl
+   return biggest
 
 }
+
+biggestElement(
+ [[3, 5, 7, 12],
+ [-1, 4, 33, 2],
+ [8, 3, 0, 4]]
+)
