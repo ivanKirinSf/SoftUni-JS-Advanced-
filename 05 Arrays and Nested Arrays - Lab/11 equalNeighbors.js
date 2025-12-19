@@ -9,18 +9,28 @@ function equalNeighbors(arr){
 
         let elA = temp[k];
 
-        if( i === arr.length-1){
-            break;
-        }
+        let elC = temp[k+1];
 
-        let elB = arr[i+1][k];
+        if(elC){
+
+            if(elA === elC){
+
+            counter ++
+        }
+        }       
+        
+        let index = i+1;
+
+        if(index <= arr.length-1){
+            let elB = arr[index][k];
 
         if(elA === elB){
 
             counter ++
 
-        }        
-        
+        }
+        }   
+
     }
      
    }
@@ -30,9 +40,9 @@ function equalNeighbors(arr){
 }
 
 equalNeighbors (
-    
-[['test', 'yes', 'yo', 'ho'],
- ['well', 'done', 'yo', '6'],
- ['not', 'done', 'yet', '5']]
+
+[['2', '2', '5', '7', '4'],
+ ['4', '0', '5', '3', '4'],
+ ['2', '5', '5', '4', '2']]
 
 )
