@@ -1,19 +1,27 @@
 function sortAnArrayBy2Criteria(arr){
 
-    arr.sort((a, b) => {
-        if( a.length !== b.length){
-            return a - b;
-        }else{
+arr.sort((a, b) => {
 
-          return a.localcompare(b);
+    if(a.length !== b.length){
 
-        }
-    })
+        return a.length - b.length;
 
-    arr.forEach(element => {
+    }else {
 
-        console.log(element)
-        
-    });
+        return a.localeCompare(b);
+
+    }
+
+})
+
+arr.forEach( element => console.log(element));
 
 }
+
+sortAnArrayBy2Criteria([
+'Isacc', 
+'Theodor', 
+'Jack', 
+'Harrison', 
+'George'
+])
