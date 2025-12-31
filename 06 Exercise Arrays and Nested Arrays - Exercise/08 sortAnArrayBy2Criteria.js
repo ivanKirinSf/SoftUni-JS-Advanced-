@@ -12,7 +12,7 @@ arr.sort((a, b) => {
 
     }
 
-})
+} )
 
 arr.forEach( element => console.log(element));
 
