@@ -1,31 +1,31 @@
-function arrayDelimiter(arr, dilimiter){
+function arrayDelimiter(arr, del){
 
-    let str = "";
+    let txt = "";
 
-    let i = 0;
+    for(let i = 0; i < arr.length; i++){
 
-     for(let el of arr){
+        let temp = arr[i];
+
+        txt += temp;
+
+        if(i < arr.length-1){
+
+           txt += del;
+
+        }       
         
-        str += el;
+    }
 
-        if( i < arr.length-1 ){
-
-            str += dilimiter                                   
-
-        }
-
-        i++
-     }  
-
-     console.log(str)
+    console.log(txt)     
 
 }
 
-arrayDelimiter(
-['One', 
+arrayDelimiter([
+'One', 
 'Two', 
 'Three', 
 'Four', 
-'Five'], 
+'Five'
+], 
 '-'
 )
