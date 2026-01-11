@@ -1,25 +1,36 @@
 function rotateArray(arr, num){
 
     
+let res = arr;
+    
 
-    let index = 0;
+    for(let i = 0; i < num; i++){
 
-    while(index < num){
+            let char = arr.pop();
 
-        for(let i = 0; i < arr.length; i++){
+            insertStart(char, arr);
 
-            let el = arr.shift(arr);
+            function insertStart(el, arr){
 
-            arr.push(el)
+                arr.unshift(el)
+            }
+
+            //arr.unshift(el)
+
+            //arr.push(el)
 
             //console.log(el)
-            console.log(arr)
+            //console.log(arr)
+        } 
 
+        console.log(arr.join(" "))
 
-
-        }
-
-        index ++
-    }
 
 }
+
+rotateArray(['1', 
+'2', 
+'3', 
+'4'], 
+2
+)
