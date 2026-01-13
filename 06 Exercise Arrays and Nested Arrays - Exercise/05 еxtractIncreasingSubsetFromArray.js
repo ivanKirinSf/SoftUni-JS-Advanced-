@@ -1,27 +1,27 @@
-function еxtractIncreasingSubsetFromArray(arr){
+function solve(arr){
+
+    let max = arr[0];
 
     let res = [];
 
-    res.push(arr[0]);
+    for(let el of arr){
 
-    //console.log(res)
+        let temp = el;
 
-    for(let i = 1; i < arr.length; i++){
+        if(temp >= max){
 
-        let cur = arr[i];
+            max = temp;
 
-        if(cur >= res[res.length-1]){
-
-            res.push(cur)
+            res.push(max)
         }
+
     }
 
-    console.log(res)
+    return res
 
 }
 
-еxtractIncreasingSubsetFromArray(
-[1, 
+console.log(solve([1, 
 3, 
 8, 
 4, 
@@ -29,5 +29,5 @@ function еxtractIncreasingSubsetFromArray(arr){
 12, 
 3, 
 2, 
-24]
-)
+24
+]))
