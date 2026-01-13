@@ -1,24 +1,20 @@
-function listOfNames(arr){
+function solve2(arr){
 
-    let index = 1;
+    let sorted = arr.sort((a, b) => a.localeCompare(b));
 
-   let sorted = arr.sort((a, b) => a.localeCompare(b));
+    for(let i = 0; i < arr.length; i++){
 
-   for(let name of sorted){
+        console.log((i+1) + "." + arr[i])
 
-    //let index = 0
+    }
 
-    let text = index + ". " + name;
-
-    index ++
-
-    console.log(text)
-
-   }
-
-    //console.log(arr)
-
+    //console.log(sorted)
 
 }
 
-listOfNames(["John", "Bob", "Christina", "Ema", "ani"])
+solve2([
+    "John",
+     "Bob", 
+     "Christina", 
+     "Ema"
+    ])
