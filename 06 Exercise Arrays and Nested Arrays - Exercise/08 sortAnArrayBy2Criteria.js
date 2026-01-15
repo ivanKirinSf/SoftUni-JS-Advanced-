@@ -1,27 +1,20 @@
-function sortAnArrayBy2Criteria(arr){
+function sortBy2(arr){
 
-arr.sort((a, b) => {
+    arr.sort(function (a, b){
 
-    if(a.length !== b.length){
+        if(a.length > b.length) return 1;
+        if(a.length < b.length) return -1;
 
-        return a.length - b.length;
+        if(a.title > b.title) return 1;
+        if(a.title < b.title) return -1;
 
-    }else {
-
-        return a.localeCompare(b);
-
-    }
-
-} )
-
-arr.forEach( element => console.log(element));
+    })   
 
 }
 
-sortAnArrayBy2Criteria([
-'Isacc', 
+console.log(sortBy2(['Isacc', 
 'Theodor', 
 'Jack', 
 'Harrison', 
-'George'
-])
+'George']
+))
