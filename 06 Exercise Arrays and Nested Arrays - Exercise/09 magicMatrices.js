@@ -1,35 +1,66 @@
-function magicMatrices(data){
+function magicMat(arr){
 
-    //let isMagic = true
+    let sumRow1 = 0;
+    let sumRow2 = 0;
 
-   for(let i = 0; i < data.length-1; i++){
+    let sumCol1 = 0;
+    let sumCol2 = 0;
+
+    let isMagic = true;
+
+    for(let i = 0; i< arr.length; i++){
+
+        let temp = arr[i];
+
+        if( i < arr.length-1 ){
+
         
-        let sumRowOne = 0;
-        let sumRowTwo = 0;
-        let sumColumnOne = 0;
-        let sumColumnTwo = 0;           
-        
-        data[i].forEach(el => sumRowOne += el);
-        data[i+1].forEach(el => sumRowOne += el);
-        data.forEach(row => sumColumnOne += row[i]);
-        data.forEach(row => sumColumnTwo += row[i+1]);
 
-        if(sumRowOne !== sumRowTwo || sumColumnOne !== sumColumnTwo){
+        for(let el of temp){
 
-            return false;
-
-        }else{
-
-             return true;
-
+            sumRow1 += Number(el)
         }
 
-    }   
-    
+        
+
+            let tempB = arr[i+1];
+
+            for(let el of tempB){
+
+                sumRow2 += Number(el);
+            }
+        
+
+        if(sumRow1 !== sumRow2){
+
+            isMagic = false;
+
+            sumRow1 = 0;
+            sumRow2 = 0;
+
+            break;
+        }
+    }
+
+        sumRow1 = 0;
+        sumRow2 = 0;
+        //let sumRow1 =  
+    }
+
+    if(isMagic === false){
+
+        console.log( false );
+
+    }
+
+
+
+
 }
 
-console.log(magicMatrices(
-[[1, 0, 0],
- [0, 0, 1],
- [0, 1, 0]]
-))
+magicMat([
+[4, 5, 6],
+ [6, 5, 4],
+ [5, 5, 7]
+]
+)
