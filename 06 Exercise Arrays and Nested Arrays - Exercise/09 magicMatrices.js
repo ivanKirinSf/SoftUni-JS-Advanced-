@@ -5,52 +5,25 @@ function magicMat(arr){
     let colOne = 0;
     let colTwo = 0;
 
-    let isMagic = true
-
     
 
+   for(let i = 0; i < arr.length; i++){
 
-    for(let i = 0; i < arr.length-1; i++){
+       arr[i].forEach(el => rowOne += el);
+       arr[i+1].forEach(el => rowTwo += el);
+       arr.forEach(row=> colOne += row[i]);
+       arr.forEach(row=> colTwo += (row[i]));
 
-        for(let el of arr[i]){
+       if(rowOne !== rowTwo || colOne !== colTwo){
 
-            rowOne += Number(el)
+       return false;
 
-        }
-        
-        for(let el of arr[i+1]){
+   }else{
 
-            rowTwo += Number(el)
+       return true
 
-        }
+   }   
 
-        
-
-            for(let k = 0; k < arr.length; k++){
-
-               colOne += Number(arr[i][k])  
-
-            }
-
-            for(let j = 0; j < arr.length; j++){
-
-                colTwo += Number(arr[i+1][j])
-            }
-
-            
-        } 
-
-        if(rowOne !== rowTwo || colOne !== colTwo){
-
-            isMagic = false
-
-        }
-
-        colOne = 0;
-        colTwo = 0;
-        rowOne = 0;
-        rowTwo = 0;
-
-        console.log(isMagic);
-
+   }        
     } 
+
