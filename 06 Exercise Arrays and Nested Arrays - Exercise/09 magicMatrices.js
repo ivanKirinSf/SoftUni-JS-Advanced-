@@ -1,66 +1,56 @@
 function magicMat(arr){
 
-    let sumRow1 = 0;
-    let sumRow2 = 0;
+    let rowOne = 0;
+    let rowTwo = 0;
+    let colOne = 0;
+    let colTwo = 0;
 
-    let sumCol1 = 0;
-    let sumCol2 = 0;
+    let isMagic = true
 
-    let isMagic = true;
+    
 
-    for(let i = 0; i< arr.length; i++){
 
-        let temp = arr[i];
+    for(let i = 0; i < arr.length-1; i++){
 
-        if( i < arr.length-1 ){
+        for(let el of arr[i]){
 
+            rowOne += Number(el)
+
+        }
         
+        for(let el of arr[i+1]){
 
-        for(let el of temp){
+            rowTwo += Number(el)
 
-            sumRow1 += Number(el)
         }
 
         
 
-            let tempB = arr[i+1];
+            for(let k = 0; k < arr.length; k++){
 
-            for(let el of tempB){
+               colOne += Number(arr[i][k])  
 
-                sumRow2 += Number(el);
             }
-        
 
-        if(sumRow1 !== sumRow2){
+            for(let j = 0; j < arr.length; j++){
 
-            isMagic = false;
+                colTwo += Number(arr[i+1][j])
+            }
 
-            sumRow1 = 0;
-            sumRow2 = 0;
+            
+        } 
 
-            break;
+        if(rowOne !== rowTwo || colOne !== colTwo){
+
+            isMagic = false
+
         }
-    }
 
-        sumRow1 = 0;
-        sumRow2 = 0;
-        //let sumRow1 =  
-    }
+        colOne = 0;
+        colTwo = 0;
+        rowOne = 0;
+        rowTwo = 0;
 
-    if(isMagic === false){
+        console.log(isMagic);
 
-        console.log( false );
-
-    }
-
-
-
-
-}
-
-magicMat([
-[4, 5, 6],
- [6, 5, 4],
- [5, 5, 7]
-]
-)
+    } 
