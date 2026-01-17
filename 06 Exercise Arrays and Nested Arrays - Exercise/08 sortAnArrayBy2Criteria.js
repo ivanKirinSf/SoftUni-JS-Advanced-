@@ -1,20 +1,25 @@
 function sortBy2(arr){
+let sorted = arr.sort((a, b) => {
 
-    arr.sort(function (a, b){
+        if(a.length !== b.length){
 
-        if(a.length > b.length) return 1;
-        if(a.length < b.length) return -1;
+            return a.length - b.length;
+        }else {
 
-        if(a.title > b.title) return 1;
-        if(a.title < b.title) return -1;
+            return a.localeCompare(b);
+        }
+    })
+    
+    sorted.forEach(element => {
 
-    })   
-
+        console.log(element)
+        
+    });
 }
 
-console.log(sortBy2(['Isacc', 
-'Theodor', 
-'Jack', 
-'Harrison', 
-'George']
-))
+
+sortBy2(
+['alpha', 
+'beta', 
+'gamma']
+)
