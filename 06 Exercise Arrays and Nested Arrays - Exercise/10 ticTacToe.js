@@ -1,65 +1,106 @@
 function ticTacToe(arr){
 
-    let player = "one";
-
-    let mark = "X";
-
     
+
+    let player1 = [];
+
+    let player2 = [];
+
+    let mark = "";
+
+
 
     let dashboard = [[false, false, false],
                      [false, false, false],
                      [false, false, false]]
 
-
-                     for(let i = 0; i< arr.length; i++){
+                     for(let i = 0; i<arr.length; i++){
+                        let temp = arr[i]//.split(" ");
 
                         if(i % 2 === 0){
 
-                           player = "one";
-
-                        }else{
-
-                           player = "two";
-
-                        }
-
-                        let move = arr[i].split(" ");
-
-                        let dashRow = move[0];
-
-                        let dashColumn = move[1];
-
-                        //console.log(player)
-
-                        if(player === "one"){
+                            player1 = temp.split(" ");                           
 
                             mark = "X";
 
-                            //console.log(mark)
+                            let row = player1[0];
 
-                        }else {
+                            let col = player1[1];
+
+                            let el = dashboard[row][col];
+
+                            if(el === false){
+
+                                dashboard[row].splice(col, 1, mark)
+                            }else if(el === "X" || el === "O"){
+
+                                console.log("This place is already taken. Please choose another!");
+
+                            }
+                            
+                            //console.log(el)
+
+                        }else if(i % 2 !== 0) {
+
+                            player2 = temp.split(" ");                           
 
                             mark = "O";
 
-                            //console.log(mark)
-                        }                  
+                            let row = player2[0];
 
+                            let col = player2[1];
 
+                            let el = dashboard[row][col];
 
-                        console.log(dashColumn)
+                            if(el === false){
+
+                                dashboard[row].splice(col, 1, mark);
+
+                            }else if(el === "X" || el === "O"){
+
+                                console.log("This place is already taken. Please choose another!");
+
+                            }                       
+                            
+
+                        }
+
+                        //console.log(player2)
                      }
+
+                     for(let k = 0; k < dashboard.length-1; k++){
+
+                        let str1 = "";
+                        let str2 = "";
+                        let str3 = "";
+                        let str4 = "";
+
+
+                        dashboard[k].forEach(element => str1 += element);
+                        dashboard[k+1].forEach(element => str2 += element);
+                        dashboard.forEach(element => str3 += element[k]);
+                        dashboard.forEach(element => str4 += element[k+1]);
+
+                        if(str1 === "XXX" || str2 === "XXX" || str3 === "XXX" || str4 === "XXX"){
+
+                            console.log("Player X wins!")
+
+                        }else if(str1 === "XXX" || str2 === "XXX" || str3 === "XXX" || str4 === "XXX"){
+
+                            console.log("Player O wins!")
+
+                        }
+
+                     }
+
+
+                     for(let line of dashboard){
+
+                        console.log(line)
+                     }
+
+                     
+
 }
 
-ticTacToe([
- "0 1",
- //"0 0",
- //"0 2", 
- //"2 0",
- //"1 0",
- //"1 1",
- //"1 2",
- //"2 2",
- //"2 1",
- //"0 0"
- ]
-)
+
