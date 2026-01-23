@@ -8,6 +8,8 @@ function ticTacToe(arr){
 
     let mark = "";
 
+    let isWinner = false;
+
 
 
     let dashboard = [[false, false, false],
@@ -23,9 +25,9 @@ function ticTacToe(arr){
 
                             mark = "X";
 
-                            let row = player1[0];
+                            let row = Number(player1[0]);
 
-                            let col = player1[1];
+                            let col = Number(player1[1]);
 
                             let el = dashboard[row][col];
 
@@ -46,9 +48,9 @@ function ticTacToe(arr){
 
                             mark = "O";
 
-                            let row = player2[0];
+                            let row = Number(player2[0]);
 
-                            let col = player2[1];
+                            let col = Number(player2[1]);
 
                             let el = dashboard[row][col];
 
@@ -60,20 +62,21 @@ function ticTacToe(arr){
 
                                 console.log("This place is already taken. Please choose another!");
 
-                            }                       
+                            }            
                             
 
                         }
 
                         //console.log(player2)
-                     }
 
-                     for(let k = 0; k < dashboard.length-1; k++){
+                        for(let k = 0; k < dashboard.length-1; k++){
 
                         let str1 = "";
                         let str2 = "";
                         let str3 = "";
                         let str4 = "";
+                        let str5 = "";
+                        let str6 = "";
 
 
                         dashboard[k].forEach(element => str1 += element);
@@ -81,26 +84,50 @@ function ticTacToe(arr){
                         dashboard.forEach(element => str3 += element[k]);
                         dashboard.forEach(element => str4 += element[k+1]);
 
-                        if(str1 === "XXX" || str2 === "XXX" || str3 === "XXX" || str4 === "XXX"){
+                        for(let j = 0; j < dashboard.length; j++){
+                            
+                            let symbol1 = dashboard[j][j]
 
-                            console.log("Player X wins!")
+                            str5 += symbol1;
 
-                        }else if(str1 === "XXX" || str2 === "XXX" || str3 === "XXX" || str4 === "XXX"){
+                            let symbol2 = dashboard[j][(dashboard.length-1)-j];
 
-                            console.log("Player O wins!")
+                            str6 += symbol2;
+                        }
+
+                        if(str1 === "XXX" || str2 === "XXX" || str3 === "XXX" || str4 === "XXX" || str5 === "XXX" || str6 === "XXX" ){
+
+                            console.log("Player X wins!");
+
+                            isWinner = true
+
+                            break;
+
+                        }else if(str1 === "OOO" || str2 === "OOO" || str3 === "OOO" || str4 === "OOO" || str5 === "OOO" || str6 === "OOO"){
+
+                            console.log("Player O wins!");
+
+                            isWinner = true
+
+                            break;
 
                         }
 
                      }
 
+                     if(isWinner){
+
+
+                        break;
+                     }
+
+                    }
 
                      for(let line of dashboard){
 
-                        console.log(line)
-                     }
-
+                        console.log(line.join(" "))
+                     }  
                      
-
-}
+                    }
 
 
