@@ -1,7 +1,5 @@
 function ticTacToe(arr){
 
-    
-
     let player1 = [];
 
     let player2 = [];
@@ -9,6 +7,8 @@ function ticTacToe(arr){
     let mark = "";
 
     let isWinner = false;
+
+    let isFull = false;
 
 
 
@@ -62,7 +62,7 @@ function ticTacToe(arr){
 
                                 console.log("This place is already taken. Please choose another!");
 
-                            }            
+                            }         
                             
 
                         }
@@ -115,8 +115,36 @@ function ticTacToe(arr){
 
                      }
 
+                     let strFull = [];
+
+                     for(let line of dashboard){
+
+                         let index = line.indexOf(false);
+
+                         if(index === -1){
+
+                            strFull += -1;
+
+                         }
+
+                         if(strFull === "-1-1-1"){
+
+                            isFull = true;
+                         }
+
+
+
+                     }
+
                      if(isWinner){
 
+
+                        break;
+                     }
+
+                     if(isFull === true){
+
+                        console.log("The game ended! Nobody wins :(")
 
                         break;
                      }
@@ -125,7 +153,7 @@ function ticTacToe(arr){
 
                      for(let line of dashboard){
 
-                        console.log(line.join(" "))
+                        console.log(line.join("\t"))
                      }  
                      
                     }
