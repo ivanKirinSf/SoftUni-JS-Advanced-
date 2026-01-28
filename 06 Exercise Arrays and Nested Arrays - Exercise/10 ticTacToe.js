@@ -1,161 +1,102 @@
-function ticTacToe(arr){
+function ticTacToe(data) {
 
-    let player1 = [];
+    let initialDashboard = [
 
-    let player2 = [];
+        [false, false, false],
+        [false, false, false],
+        [false, false, false]
 
-    let mark = "";
+    ];
 
-    let isWinner = false;
+    let isPlayerOnePlay = true;
 
-    let isFull = false;
+    for (let coordinates of data) {
 
+        let [x, y] = coordinates.split(" ");
 
+        let marker = isPlayerOnePlay ? "X" : "O";
 
-    let dashboard = [[false, false, false],
-                     [false, false, false],
-                     [false, false, false]]
+        if (initialDashboard[x][y]) {
 
-                     for(let i = 0; i<arr.length; i++){
-                        let temp = arr[i]//.split(" ");
+            console.log("This place is already taken. Please choose another!");
 
-                        if(i % 2 === 0){
+            continue;
+        }
 
-                            player1 = temp.split(" ");                           
+        initialDashboard[x][y] = marker;
 
-                            mark = "X";
+        if (checkWin(initialDashboard, marker)) {
 
-                            let row = Number(player1[0]);
+            console.log(`Player ${marker} wins!`);
 
-                            let col = Number(player1[1]);
+        }
 
-                            let el = dashboard[row][col];
+        if (!checkFreeSpace(initialDashboard)) {
 
-                            if(el === false){
+            console.log("The game ended! Nobody wins :(")
 
-                                dashboard[row].splice(col, 1, mark)
-                            }else if(el === "X" || el === "O"){
+            return
 
-                                console.log("This place is already taken. Please choose another!");
+        }
 
-                            }
-                            
-                            //console.log(el)
+        isPlayerOnePlay = !isPlayerOnePlay;
 
-                        }else if(i % 2 !== 0) {
+        function checkWin(dashboard, market) {
 
-                            player2 = temp.split(" ");                           
+            for (let i = 0; i < dashboard.length; i++) {
+                if (dashboard[i][0] === marker &&
+                    dashboard[i][1] === marker &&
+                    dashboard[i][2] === marker) {
 
-                            mark = "O";
+                    return true;
 
-                            let row = Number(player2[0]);
+                }
 
-                            let col = Number(player2[1]);
+                else if (
+                    dashboard[0][i] === marker &&
+                    dashboard[1][i] === marker &&
+                    dashboard[2][i] === marker) {
 
-                            let el = dashboard[row][col];
+                    return true;
 
-                            if(el === false){
+                } else if (
 
-                                dashboard[row].splice(col, 1, mark);
+                    dashboard[0][0] === marker &&
+                    dashboard[1][1] === marker &&
+                    dashboard[2][2] === marker
 
-                            }else if(el === "X" || el === "O"){
+                ) {
 
-                                console.log("This place is already taken. Please choose another!");
+                    return true;
+                } else if (
 
-                            }         
-                            
+                    dashboard[0][2] === marker &&
+                    dashboard[1][1] === marker &&
+                    dashboard[2][0] === marker
+                ) {
 
-                        }
+                    return true;
+                }
 
-                        //console.log(player2)
+                return false
 
-                        for(let k = 0; k < dashboard.length-1; k++){
 
-                        let str1 = "";
-                        let str2 = "";
-                        let str3 = "";
-                        let str4 = "";
-                        let str5 = "";
-                        let str6 = "";
+            }
+        }
 
+        function checkFreeSpace(dashboard) {
 
-                        dashboard[k].forEach(element => str1 += element);
-                        dashboard[k+1].forEach(element => str2 += element);
-                        dashboard.forEach(element => str3 += element[k]);
-                        dashboard.forEach(element => str4 += element[k+1]);
+            return !!dashboard.flat().filter(x => !x).length
+        }
 
-                        for(let j = 0; j < dashboard.length; j++){
-                            
-                            let symbol1 = dashboard[j][j]
 
-                            str5 += symbol1;
+    }
 
-                            let symbol2 = dashboard[j][(dashboard.length-1)-j];
+    function printDashboard(dashboard) {
 
-                            str6 += symbol2;
-                        }
+        dashboard.forEach(row => console.log(row.join("/t")))
 
-                        if(str1 === "XXX" || str2 === "XXX" || str3 === "XXX" || str4 === "XXX" || str5 === "XXX" || str6 === "XXX" ){
-
-                            console.log("Player X wins!");
-
-                            isWinner = true
-
-                            break;
-
-                        }else if(str1 === "OOO" || str2 === "OOO" || str3 === "OOO" || str4 === "OOO" || str5 === "OOO" || str6 === "OOO"){
-
-                            console.log("Player O wins!");
-
-                            isWinner = true
-
-                            break;
-
-                        }
-
-                     }
-
-                     let strFull = [];
-
-                     for(let line of dashboard){
-
-                         let index = line.indexOf(false);
-
-                         if(index === -1){
-
-                            strFull += -1;
-
-                         }
-
-                         if(strFull === "-1-1-1"){
-
-                            isFull = true;
-                         }
-
-
-
-                     }
-
-                     if(isWinner){
-
-
-                        break;
-                     }
-
-                     if(isFull === true){
-
-                        console.log("The game ended! Nobody wins :(")
-
-                        break;
-                     }
-
-                    }
-
-                     for(let line of dashboard){
-
-                        console.log(line.join("\t"))
-                     }  
-                     
-                    }
+    }
+}
 
 
