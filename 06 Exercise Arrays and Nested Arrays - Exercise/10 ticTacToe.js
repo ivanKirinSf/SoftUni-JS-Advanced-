@@ -1,109 +1,54 @@
-function ticTacToe(data) {
+function ticTacToe(arr){
 
-let initialDashboard = [
+   let marker = "";
 
-    [false, false, false],
-    [false, false, false],
-    [false, false, false],
+   let coordinates = [];
 
-];
+ let startDashboard = [
+                       [false, false, false],
+                       [false, false, false],
+                       [false, false, false],
+                     ]
 
-let isPlayerOnePlay = true;
+                     let index = 0
+                     for(let el of arr){
 
-
-for(let coordinates of data){
-
-    let [x, y] = coordinates.split(" ");
-
-    let marker = isPlayerOnePlay ? "X" : "O";
-
-    if(initialDashboard[x][y]){
-
-        console.log("This place is already taken. Please choose another!");
-        continue;
-
-    }
-
-    initialDashboard[x][y] = marker;
-
-    if(checkWin(initialDashboard, marker)){
-
-        console.log(`Player ${marker} wins!`);
-
-        return;
-
-    }
+                        coordinates = el.split(" ");
 
 
 
-    if(!checkFreeSpace(initialDashboard)){
 
-        console.log("The game ended! Nobody wins :(") 
+                        if(index % 2 === 0){
 
-        return;        
+                           marker = "X";
+                           
+                        }else if(index % 2 !== 0){
 
-    }
+                           marker = "O"
+                        }
 
-    isPlayerOnePlay = !isPlayerOnePlay;
+                        if(isEmpty(startDashboard)){
 
+                           console.log("This place is already taken. Please choose another!")
+
+                        }
+
+                        index++
+                     }
+
+                     function isEmpty(dashboard){
+
+                        if(startDashboard[Number(coordinates[0])][Number(coordinates[1])] === false){
+
+                           return false;
+
+                        }else{
+
+                           return true;
+                        }
+
+                     }
 }
-
-
-
-function checkWin(dashboard, marker){
-
- for(let i = 0; i< dashboard.length; i++){
-            if(dashboard[i][0] === marker &&
-                dashboard[i][1] === marker &&
-                dashboard[i][2] === marker){
-
-                  return true;
-
-
-                }else if(
-
-                    dashboard[0][i] === marker &&
-                    dashboard[1][i] === marker &&
-                    dashboard[2][i] === marker
-
-                ){
-
-                   return true;
-
-                }else if(
-                    dashboard[0][0] === marker &&
-                    dashboard[1][1] === marker &&
-                    dashboard[2][2] === marker
-                ){
-
-                    return true;
-
-                } else if(
-
-                    dashboard[0][2] === marker &&
-                    dashboard[1][1] === marker &&
-                    dashboard[2][0] === marker  
-                ){
-
-                    return true; 
-                }
-
-                return false; 
-
-        }
-
-};
-
-
-
-function checkFreeSpace(dashboard){
-
-    return !!dashboard.flat().filter(x => !x).length;
-
-}; 
-
-}
-
 
 
 
