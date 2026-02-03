@@ -1,95 +1,116 @@
-function ticTacToe(arr){
+function ticTacToe(data){
 
-   let marker = "";
+  let mark = "";
 
-   let coordinates = [];
+  let line = 0;
 
- let startDashboard = [
+  let column = 0;
 
-                       [false, false, false],
-                       [false, false, false],
-                       [false, false, false],
+  let startDashboard = [
 
-                     ]
+    [false, false, false],
+    [false, false, false],
+    [false, false, false],
 
-                     
-                     for(let k = 0; k < arr.length; k++){
+]
 
-                        coordinates = arr[k].split(" ");
+for(let i = 0; i < data.length; i++){
 
-                        if(k % 2 === 0){
+  let coordinates = data[i].split(" ");
 
-                           marker = "X";
-                           
-                        }else if(k % 2 !== 0){
+  line = Number(coordinates[0]);
 
-                           marker = "O"
-                        }
+  column = Number(coordinates[1]);
 
-                         if(startDashboard[Number(coordinates[0])][Number(coordinates[1])] === false){
+  if(i % 2 === 0){
 
-                           startDashboard[Number(coordinates[0])][Number(coordinates[1])] = marker                           
+    mark = "X";
 
-                        }else{
+  }else {
 
-                           console.log("This place is already taken. Please choose another!");
-                        }                        
+    mark = "O";
 
-                        if(freeSpace(startDashboard)){
+  }
 
-                           console.log("The game ended! Nobody wins :(") 
+  if(checkPosition(startDashboard)){
 
-                          return print(startDashboard);
+    console.log("This place is already taken. Please choose another!");  
 
-                        }
+  }
 
-                        if(hasWinner(startDashboard, marker)){
+  if(freeSpace(startDashboard)){
 
-                           console.log(`Player ${marker} wins!`);
+    console.log("The game ended! Nobody wins :(")
 
-                           return print(startDashboard)
+    return print(startDashboard)
 
-                        }
+  }
 
-                        for(let line of startDashboard){
+  if(haveAWinner(startDashboard)){
 
-                        console.log(line.join("\t"))
+    console.log(`Player ${mark} wins!`)
 
-                     } 
-                        
-                     }
-                     
-                     function freeSpace(dashboard){
+    return print(startDashboard)
 
-                        let res = dashboard.flat();
 
-                        let filtered = res.filter(x => x === false);
+  }
 
-                        if(filtered.length > 0){
+  print(startDashboard)
 
-                           return false
-                        }
+  //console.log(mark);
 
-                        return true
+}
 
-                     }
+function checkPosition(dashboard){
 
-                     function hasWinner(dashboard, marker){
+  if(dashboard[line][column] !== false){
 
-                        for(let i = 0; i < dashboard.length; i++){
-                           
-                           if(dashboard[i][0] === marker &&
-                              dashboard[i][1] === marker &&
-                              dashboard[i][2] === marker 
+    return true;
+
+  }
+
+}
+
+function freeSpace(dashboard){
+
+  let isFree = false
+
+  for(let row of dashboard){
+
+    let index = row.indexOf(false);
+
+    if(index === -1){
+
+      isFree = true;
+      
+      //return true;
+
+    }    
+  }
+
+  if(isFree === false){
+
+    return true;
+  }
+
+}
+
+function haveAWinner(dashboard){
+
+  for(let i = 0; i < startDashboard.length; i++){
+
+                           if(dashboard[i][0] === mark &&
+                              dashboard[i][1] === mark &&
+                              dashboard[i][2] === mark 
                            ){
                               
                               return true
 
                            }else if(
 
-                              dashboard[0][i] === marker &&
-                              dashboard[1][i] === marker &&
-                              dashboard[2][i] === marker 
+                              dashboard[0][i] === mark &&
+                              dashboard[1][i] === mark &&
+                              dashboard[2][i] === mark 
 
                            ){
 
@@ -97,9 +118,9 @@ function ticTacToe(arr){
 
                            }else if(
 
-                              dashboard[0][0] === marker &&
-                              dashboard[1][1] === marker &&
-                              dashboard[2][2] === marker 
+                              dashboard[0][0] === mark &&
+                              dashboard[1][1] === mark &&
+                              dashboard[2][2] === mark 
 
                            ){
 
@@ -107,21 +128,20 @@ function ticTacToe(arr){
 
                            }else if(
 
-                              dashboard[0][2] === marker &&
-                              dashboard[1][1] === marker &&
-                              dashboard[2][0] === marker 
+                              dashboard[0][2] === mark &&
+                              dashboard[1][1] === mark &&
+                              dashboard[2][0] === mark 
 
                            ){
 
                               return true;
                               
                            }
+                          
+                          }
+  }               
 
-                        }
-
-                     }
-
-                     function print(dashboard){
+                   function print(dashboard){
 
                         for(let line of startDashboard){
 
@@ -129,8 +149,9 @@ function ticTacToe(arr){
 
                      }
 
-                     }      
-                     
+                     }  
+                          
+                          
 
 }
 
