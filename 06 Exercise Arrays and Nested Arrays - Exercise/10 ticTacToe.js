@@ -1,157 +1,122 @@
 function ticTacToe(data){
 
-  let mark = "";
+  let initialDashboard = [[false, false, false],
+                          [false, false, false],
+                          [false, false, false]
+                        ];
 
-  let line = 0;
-
-  let column = 0;
-
-  let startDashboard = [
-
-    [false, false, false],
-    [false, false, false],
-    [false, false, false],
-
-]
-
-for(let i = 0; i < data.length; i++){
-
-  let coordinates = data[i].split(" ");
-
-  line = Number(coordinates[0]);
-
-  column = Number(coordinates[1]);
-
-  if(i % 2 === 0){
-
-    mark = "X";
-
-  }else {
-
-    mark = "O";
-
-  }
-
-  if(checkPosition(startDashboard)){
-
-    console.log("This place is already taken. Please choose another!");  
-
-  }
-
-  if(freeSpace(startDashboard)){
-
-    console.log("The game ended! Nobody wins :(")
-
-    return print(startDashboard)
-
-  }
-
-  if(haveAWinner(startDashboard)){
-
-    console.log(`Player ${mark} wins!`)
-
-    return print(startDashboard)
+                        let isPlayerOnePlay = true;
 
 
-  }
+                        for(let coordinates of data){
 
-  print(startDashboard)
+                          let[x, y] = coordinates.split(" ");
 
-  //console.log(mark);
+                          let marker = isPlayerOnePlay ? "X" : "O";
 
-}
+                          if(initialDashboard[x][y]){
 
-function checkPosition(dashboard){
+                            console.log("This place is already taken. Please choose another!");
 
-  if(dashboard[line][column] !== false){
+                            continue; 
 
-    return true;
-
-  }
-
-}
-
-function freeSpace(dashboard){
-
-  let isFree = false
-
-  for(let row of dashboard){
-
-    let index = row.indexOf(false);
-
-    if(index === -1){
-
-      isFree = true;
-      
-      //return true;
-
-    }    
-  }
-
-  if(isFree === false){
-
-    return true;
-  }
-
-}
-
-function haveAWinner(dashboard){
-
-  for(let i = 0; i < startDashboard.length; i++){
-
-                           if(dashboard[i][0] === mark &&
-                              dashboard[i][1] === mark &&
-                              dashboard[i][2] === mark 
-                           ){
-                              
-                              return true
-
-                           }else if(
-
-                              dashboard[0][i] === mark &&
-                              dashboard[1][i] === mark &&
-                              dashboard[2][i] === mark 
-
-                           ){
-
-                              return true;
-
-                           }else if(
-
-                              dashboard[0][0] === mark &&
-                              dashboard[1][1] === mark &&
-                              dashboard[2][2] === mark 
-
-                           ){
-
-                              return true;
-
-                           }else if(
-
-                              dashboard[0][2] === mark &&
-                              dashboard[1][1] === mark &&
-                              dashboard[2][0] === mark 
-
-                           ){
-
-                              return true;
-                              
-                           }
-                          
                           }
-  }               
 
-                   function print(dashboard){
+                          initialDashboard[x][y] = marker; 
 
-                        for(let line of startDashboard){
+                          if(checkWin(initialDashboard, marker)){
 
-                        console.log(line.join("\t"))
+                            console.log(`Player ${marker} wins!`);
 
-                     }
+                            return printDashboard(initialDashboard);
 
-                     }  
+                          };
+
+                          if(!checkFreeSpace(initialDashboard)){
+
+                            console.log("The game ended! Nobody wins :("); 
+                            
+                            return printDashboard(initialDashboard);
+
+                          }
+
+                          isPlayerOnePlay = !isPlayerOnePlay                          
                           
-                          
+                        }      
+                        
+                        function checkWin(dashboard, marker){
+
+                          for(let i = 0; i < dashboard.length; i++){
+
+                             if(dashboard[i][0] === marker && 
+                                dashboard[i][1] === marker &&
+                                dashboard[i][2] === marker 
+                             ){
+
+                               return true;
+
+                             }else if(
+                              dashboard[0][i] === marker &&
+                              dashboard[1][i] === marker &&
+                              dashboard[2][i] === marker
+                             ){
+
+                              return true;
+
+                             }else if(
+
+                              dashboard[0][0] === marker &&
+                              dashboard[1][1] === marker &&
+                              dashboard[2][2] === marker 
+
+                             ){
+
+                              return true;
+
+                             }else if(
+                              dashboard[0][2] === marker &&
+                              dashboard[1][1] === marker && 
+                              dashboard[2][0] === marker 
+                    
+                             ){
+
+                               return true;
+
+                             }
+
+                             return false;
+
+                          }
+
+                        }
+
+                        function checkFreeSpace(dashboard){
+
+                          return !!dashboard.flat().filter(x => !x).length
+
+                        }
+
+                        function printDashboard(dashboard){
+
+                          dashboard.forEach(row => console.log(row.join("\t")));
+
+                        }
+
 
 }
 
+
+ticTacToe(
+[
+ "0 0",
+ "0 0",
+ "1 1",
+ "0 1",
+ "1 2",
+ "0 2",
+ "2 2",
+ "1 2",
+ "2 2",
+ "2 1"
+]
+)
