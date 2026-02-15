@@ -29,16 +29,29 @@ function orbit(input){
     }
 
 
-    placeTheStar(matrix, xCor, yCor)
+    placeTheStar(matrix, xCor, yCor);
+
+    if(placeTheStar = true){
 
     surrounding(matrix, xCor, yCor, width)
 
     printMatrix(matrix)
 
+    }   
+
 
     function placeTheStar(arr, x, y){
 
-        arr[x][y] = 1;                
+        if(x >=0 && x < arr[x].length ){
+
+            arr[x][y] = 1; 
+
+            return true;
+        }
+
+        return false;
+
+                        
 
     }
 
@@ -46,27 +59,45 @@ function orbit(input){
 
         
 
-        let levels = (num - 1)-x;
+        let mid = Math.floor(num/2);
+
+        let levels = 0
+
+        if(x < mid){
+
+            levels = (num - 1)-x;
+
+        }else if( x >= mid){
+
+            levels = x;
+
+        }
+        
             
             for(let i = 1; i <= levels; i++){ // колко рунда имаме
 
                 
 
-                index = x - i;
-                if(index < 0){
-                    index = 0
-                }
+                index = x - i;    
+
                 while( index <= x + i){
 
-                    let temp = arr[index];
+                    if(index < 0){
+                        index = 0;
+                    }
 
-                    index2 = x - i;
+                    if(index < num){
+
+                        let temp = arr[index];
+
+                    
+                    index2 = x - i; 
                     if(index2 < 0){
-                    index2 = 0
-                }
+                        index2 = 0;
+                    }                  
                     while( index2 <= x + i){
 
-                        if(temp[index2] !== undefined && temp[index2] !== 1){
+                        if(temp[index2] === false ){
                             temp[index2] = i+1;
                         }
 
@@ -74,6 +105,10 @@ function orbit(input){
                     }
 
                     index++
+
+                    }else {
+                        break;
+                    }                    
                     
                 }
             }                       
@@ -83,14 +118,17 @@ function orbit(input){
 
     function printMatrix(matrix){
 
-        console.table(matrix)
+        //console.table(matrix)
 
     //for(let el of matrix){
 
         //console.table(el.join(" "))
     //}
 
+    for(let row of matrix){
+
+        console.log(row.join(" "))
     }
-    
+    }    
 }
 
