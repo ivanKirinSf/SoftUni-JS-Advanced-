@@ -42,7 +42,7 @@ function orbit(input){
 
     function placeTheStar(arr, x, y){
 
-        if(x >=0 && x < arr[x].length ){
+        if(x >=0 && x < arr[x].length && y >=0 && y < arr[y].length ){
 
             arr[x][y] = 1; 
 
@@ -63,54 +63,38 @@ function orbit(input){
 
         let levels = 0
 
-        if(x < mid){
+        if(y < mid){
 
-            levels = (num - 1)-x;
+            levels = (num - 1)-y;
 
-        }else if( x >= mid){
+        }else if( y >= mid){
 
-            levels = x;
+            levels = y;
 
         }
         
             
             for(let i = 1; i <= levels; i++){ // колко рунда имаме
 
-                
+                index = x-i;
+                while(index <= x+i){
+                    let temp = arr[index]
 
-                index = x - i;    
+                    index2 = y-1;
+                    while(index2 <= y+1){
 
-                while( index <= x + i){
+                        if(temp[index2] === false){
 
-                    if(index < 0){
-                        index = 0;
-                    }
-
-                    if(index < num){
-
-                        let temp = arr[index];
-
-                    
-                    index2 = x - i; 
-                    if(index2 < 0){
-                        index2 = 0;
-                    }                  
-                    while( index2 <= x + i){
-
-                        if(temp[index2] === false ){
-                            temp[index2] = i+1;
+                            temp[index2] = 1 + i;
                         }
 
                         index2++
-                    }
+                    } 
 
                     index++
-
-                    }else {
-                        break;
-                    }                    
-                    
                 }
+                
+
             }                       
 
     }
