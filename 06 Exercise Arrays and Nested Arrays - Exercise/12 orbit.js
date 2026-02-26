@@ -12,7 +12,7 @@ function orbit(input){
 
     let matrix = [];
 
-    for(let i = 0; i < width; i ++){
+    for(let i = 0; i < height; i ++){
 
         let newArr = [];
 
@@ -29,45 +29,43 @@ function orbit(input){
     }
 
 
-    placeTheStar(matrix, xCor, yCor);
+    placeTheStar(matrix, xCor, yCor, height, width);
 
     if(placeTheStar = true){
 
-    surrounding(matrix, xCor, yCor, width)
+    surrounding(matrix, xCor, yCor, height, width)
 
     printMatrix(matrix)
 
     }   
 
 
-    function placeTheStar(arr, x, y){
+    function placeTheStar(arr, x, y, h, w){
 
-        if(x >=0 && x < arr[x].length && y >=0 && y < arr[y].length ){
+        if(x >=0 && x < arr[x].length && x < h && y >=0 && y < matrix.length && y < w ){
 
             arr[x][y] = 1; 
 
             return true;
         }
 
-        return false;
-
-                        
+        return false;                        
 
     }
 
-    function surrounding(arr, x, y, num){
+    function surrounding(arr, x, y, h, w){
 
         
 
-        let mid = Math.floor(num/2);
+        let mid = Math.floor(w/2);
 
         let levels = 0
 
-        if(y < mid){
+        if(y <= mid){
 
-            levels = (num - 1)-y;
+            levels = (w - 1)-y;
 
-        }else if( y >= mid){
+        }else if( y >= w || y > mid){
 
             levels = y;
 
@@ -77,15 +75,24 @@ function orbit(input){
             for(let i = 1; i <= levels; i++){ // колко рунда имаме
 
                 index = x-i;
+                if(index < 0){
+                    index = 0;
+                }
                 while(index <= x+i){
+
+                    if(index >= h){
+                        break;
+                    }
+
                     let temp = arr[index]
 
-                    index2 = y-1;
-                    while(index2 <= y+1){
+                    index2 = y-i;
+                    while(index2 <= y+i){ // takes a row and takes each of the elements in it.
 
                         if(temp[index2] === false){
 
                             temp[index2] = 1 + i;
+
                         }
 
                         index2++
@@ -115,4 +122,3 @@ function orbit(input){
     }
     }    
 }
-
