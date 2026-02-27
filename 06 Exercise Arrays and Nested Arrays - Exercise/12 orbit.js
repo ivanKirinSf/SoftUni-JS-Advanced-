@@ -12,6 +12,8 @@ function orbit(input){
 
     let matrix = [];
 
+    let isPlaced = true;
+
     for(let i = 0; i < height; i ++){
 
         let newArr = [];
@@ -42,41 +44,32 @@ function orbit(input){
 
     function placeTheStar(arr, x, y, h, w){
 
-        if(x >=0 && x < arr[x].length && x < h && y >=0 && y < matrix.length && y < w ){
-
-            arr[x][y] = 1; 
-
-            return true;
-        }
-
-        return false;                        
+       arr[x][y] = 1;     
+       
+       isPlaced = true;
 
     }
 
     function surrounding(arr, x, y, h, w){
 
-        
-
-        let mid = Math.floor(w/2);
-
         let levels = 0
 
-        if(y <= mid){
+        if(h > w){
 
-            levels = (w - 1)-y;
+            levels = h;
 
-        }else if( y >= w || y > mid){
+        }else {
 
-            levels = y;
-
+            levels = w
         }
-        
-            
+                    
             for(let i = 1; i <= levels; i++){ // колко рунда имаме
 
                 index = x-i;
                 if(index < 0){
+
                     index = 0;
+
                 }
                 while(index <= x+i){
 
