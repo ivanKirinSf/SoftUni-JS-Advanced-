@@ -1,14 +1,17 @@
+
 function spiralMatrix(x, y){
 
     let height = Number(x);
 
     let width = Number(y); 
 
+
     let matrix = [];
 
-    let num = 1;
+    
 
-    let last = 0;
+    
+    let lastIndex = 0;
 
     for(let i = 0; i < height; i ++){
 
@@ -25,30 +28,98 @@ function spiralMatrix(x, y){
 
         matrix.push(arr)
     }     
+    
+    
+    let size = x*y;
 
-          let size = x*y;
+         let row = 0;
+         let col = 0;
 
-         for(let a = 0; a <= matrix[0].length-1; a++){
+         i = 1;
+        while(i <= size){
 
-            if(matrix[last][a] === false){
+            lastIndex = col;
 
-            matrix[0][a] = num;
+           for(let a = col; a < matrix[row].length; a++){ // horizontalRight direction
 
-            num++
+            let tempA = matrix[row][a];
 
+            if(tempA === false){
 
+                matrix[row][a] = i;
+
+                i++
+                
+                lastIndex = a
+            }
+             
+           }
+
+           col = lastIndex
+
+           for(let b = row; b < matrix.length; b++){  // verticalDown direction 
+
+            lastIndex = row;
+
+                let tempB = matrix[b][col];
+
+                if(tempB === false){
+
+                    matrix[b][col] = i;
+
+                     i++
+
+                    lastIndex = b
+                }
+
+           }
+
+           row = lastIndex;
+
+           for(let c = col; c >= 0; c--){ // horizontaLeft direction
+
+            lastIndex = col;
+
+            let tempC = matrix[row][c];
+
+            if(tempC === false){
+
+                matrix[row][c] = i;
+
+                 i++
+
+                lastIndex = c;
             }
 
-            matrix[0][a] = num;
+           }
 
-            num++
+           col = lastIndex;
 
-         }
+           for(let d = row; d >= 0; d--){ // verticalUp direction
 
-         print(matrix)
+            lastIndex = row;
 
-    
+            let tempD = matrix[d][col];
 
+            if(tempD === false){
+
+                matrix[d][col] = i;
+
+                 i++
+
+                 lastIndex = d;
+            }
+
+           }
+
+
+        }
+
+
+         print(matrix)    
+
+
+         
 
     function print(matrix){
 
@@ -56,7 +127,6 @@ function spiralMatrix(x, y){
 
             console.log(row.join(" "))
         }
-
     }
 
-}
+    }
