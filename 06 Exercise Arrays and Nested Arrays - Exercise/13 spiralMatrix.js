@@ -10,6 +10,8 @@ function spiralMatrix(x, y){
 
     let round = 0;
 
+   
+
     
 
     
@@ -34,11 +36,12 @@ function spiralMatrix(x, y){
     
     let size = x*y;
 
-         let row = 0;
-         let col = 0;
-
+         
          i = 1;
         while(i <= size){
+
+            let row = round;
+            let col = round;
 
             lastIndex = col;
 
@@ -61,8 +64,6 @@ function spiralMatrix(x, y){
 
            for(let b = row; b < matrix.length; b++){  // verticalDown direction 
 
-            lastIndex = row;
-
                 let tempB = matrix[b][col];
 
                 if(tempB === false){
@@ -80,7 +81,7 @@ function spiralMatrix(x, y){
 
            for(let c = col; c >= 0; c--){ // horizontaLeft direction
 
-            lastIndex = col;
+            
 
             let tempC = matrix[row][c];
 
@@ -99,8 +100,6 @@ function spiralMatrix(x, y){
 
            for(let d = row; d >= 0; d--){ // verticalUp direction
 
-            lastIndex = row;
-
             let tempD = matrix[d][col];
 
             if(tempD === false){
@@ -114,10 +113,7 @@ function spiralMatrix(x, y){
 
            }
 
-           round ++;
-
-         row = round;
-         col = round;
+           round ++;        
 
 
         }
@@ -137,3 +133,7 @@ function spiralMatrix(x, y){
     }
 
     }
+
+
+
+ spiralMatrix(8, 8)
