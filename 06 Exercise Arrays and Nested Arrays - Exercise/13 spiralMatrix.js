@@ -8,6 +8,8 @@ function spiralMatrix(x, y){
 
     let matrix = [];
 
+    let round = 0;
+
     
 
     
@@ -18,7 +20,7 @@ function spiralMatrix(x, y){
         let arr = [];
 
         index = 0;
-        while(index < y){
+        while(index < width){
 
            arr.push(false);
 
@@ -111,6 +113,11 @@ function spiralMatrix(x, y){
             }
 
            }
+
+           round ++;
+
+         row = round;
+         col = round;
 
 
         }
