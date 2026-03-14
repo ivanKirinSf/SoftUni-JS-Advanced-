@@ -1,24 +1,23 @@
-function town(arr){
+function townPop(input){
 
     let city = {};
 
-    for(let str of arr){
+    for(let line of input){
 
-        let [name, population] = str.split(" <->");
+        let tokens = line.split("<->");
 
-        population = Number(population)
+        let townName = tokens[0];
 
-        if(city[name] !== undefined){
+        let townPopulation = Number(tokens[1]);
 
-            population += city[name];
-        }
+        city[townName] = townPopulation
 
-        city[name] = population;
+
+        //console.log(townPopulation)
+
+
     }
 
-    for(let town in city){
-
-        console.log(`${town} <-> ${city[town]}`)
-    }
+    console.log(city)
 
 }
