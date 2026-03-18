@@ -1,23 +1,40 @@
 function townPop(input){
 
-    let city = {};
+    let city = {}
 
-    for(let line of input){
+  for(let el of input){
 
-        let tokens = line.split("<->");
+    let tokens = el.split(" <-> ");
 
-        let townName = tokens[0];
+    let townName = tokens.shift();
 
-        let townPopulation = Number(tokens[1]);
+    let townPopulation = Number(tokens.shift());
 
-        city[townName] = townPopulation
+    if(city.hasOwnProperty(townName)){
 
+        city[townName] += townPopulation; 
+        
+    }else {
 
-        //console.log(townPopulation)
+     city[townName]= townPopulation;
 
+    }     
 
-    }
+    //console.log(population)
+  }
 
-    console.log(city)
+  let entries = Object.entries(city)
+
+  //console.table(entries)
+
+  for(let el of entries){
+
+       let key = el[0];
+
+       let value = el[1];
+
+       console.log(`${key} : ${value}`);
+
+  }
 
 }
