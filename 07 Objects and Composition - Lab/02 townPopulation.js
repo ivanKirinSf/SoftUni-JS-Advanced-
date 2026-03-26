@@ -1,40 +1,38 @@
-function townPop(input){
+function townPopulation(input){
 
-    let city = {}
+  let town = {}
 
   for(let el of input){
 
-    let tokens = el.split(" <-> ");
+    let temp = el.split(" <-> ");
 
-    let townName = tokens.shift();
+    let cityName = temp.shift();
 
-    let townPopulation = Number(tokens.shift());
+    let cityPop = Number(temp.shift());
 
-    if(city.hasOwnProperty(townName)){
+    if(town.hasOwnProperty(cityName)){
 
-        city[townName] += townPopulation; 
-        
-    }else {
+       town[cityName] += cityPop;
 
-     city[townName]= townPopulation;
+    }else{
 
-    }     
+      town[cityName] = cityPop;
 
-    //console.log(population)
+    }    
+
   }
 
-  let entries = Object.entries(city)
+  for(let key in town){
 
-  //console.table(entries)
-
-  for(let el of entries){
-
-       let key = el[0];
-
-       let value = el[1];
-
-       console.log(`${key} : ${value}`);
-
+    console.log(`${key} : ${town[key]}`)
   }
 
 }
+
+
+townPopulation(['Sofia <-> 1200000',
+'Montana <-> 20000',
+'New York <-> 10000000',
+'Washington <-> 2345000',
+'Sofia <-> 1000000']
+)
