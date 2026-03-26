@@ -1,13 +1,19 @@
 function cityRecord(name, population, treasury){
 
-     let city = {
+  let city = {};
 
-       name: name,
-       population: population,
-       treasury: treasury,
+  city.name = name;
 
-     }
+  city.population = Number(population);
 
-     return city
+  city.treasury = Number(treasury);
+
+  return city
 
 }
+
+console.log(cityRecord('Tortuga',
+7000,
+15000
+))
+
