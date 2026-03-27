@@ -1,22 +1,30 @@
-function cityTaxes(name, population, treasury){
 
-let town = {};
+function cityTaxes(cityName, cityPopulation, cityThreasury){
 
-town.name = name;
-town.population = Number(population);
-town.treasury = Number(treasury);
-town.taxRate = 10;
-town.collectTaxes = function (){
-    town.treasury += town.population * town.taxRate
-};
-town.applyGrowth = applyGrowth();
-town.applyRecession = applyRecession()
+    let city = {};
 
+    city.name = cityName;
+    city.population = cityPopulation;
+    city.treasury = cityThreasury;
+    city.taxRate = 10;
 
+    city.collectTaxes = function(){
 
+        this.treasury += this.population * this.taxRate;
 
-}
+    };
 
+    city.applyGrowth = function(percent){
 
-const city = cityTaxes('Tortuga',  7000,  15000);
-console.table(city);
+        this.population += this.population * (percent/100);
+
+    }
+
+    city.applyRecession = function(percentage){
+
+        this.treasury -= this.treasury * percentage/100;
+
+    }
+
+    return city
+} 
