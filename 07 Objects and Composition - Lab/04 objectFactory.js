@@ -29,4 +29,21 @@ const orders = [
 ];
 
 const products = factory(library, orders);
-console.log(products);
+console.table(products);
+
+
+function factory(library, orders){
+
+    let result = {};
+
+    for(let order of orders){
+
+        let pro = Object.assign({}, order.template);
+        
+    }
+
+    for(let el in library){
+
+        
+    }
+}
