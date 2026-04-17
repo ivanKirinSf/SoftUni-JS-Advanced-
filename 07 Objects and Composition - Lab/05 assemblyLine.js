@@ -1,24 +1,29 @@
-function assemblyLine(data){
+function createAssemblyLine(){
 
-    data.hasClima = () => {
-        
+    return{
+
+        hasClima(car){
+            car.temp = 21;
+            car.tempSettings = 21;
+
+            car.adjustTemp = function (){
+                if(this.temp < tempSettings){
+
+                    this.temp += 1;
+                    
+                }else if(this.temp > tempSettings){
+
+                    this.temp -= 1;
+                }
+                
+            }
+        }
+
+
+
     }
 
 
 
+
 }
-
-
-const assemblyLine = createAssemblyLine();
-
-const myCar = {
-    make: 'Toyota',
-    model: 'Avensis'
-};
-
-
-assemblyLine.hasClima(myCar);
-console.log(myCar.temp);
-myCar.tempSettings = 18;
-myCar.adjustTemp();
-console.log(myCar.temp);
