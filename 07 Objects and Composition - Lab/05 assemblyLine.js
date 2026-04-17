@@ -15,15 +15,21 @@ function createAssemblyLine(){
 
                     this.temp -= 1;
                 }
-                
+
             }
         }
 
+        hasAudio(car){
 
+            this.name = myCar.currentTrack.name;
+            this.artist = myCar.currentTrack.artist;
+            this.nowPlaying = function (){
 
+                console.log(`Now playing ${currentTrack.name} by ${currentTrack.artist}`);
+
+            }
+
+        }
     }
-
-
-
 
 }
