@@ -1,17 +1,37 @@
-function jsonToHtmlTable(json){
+function jsonToHtmlTable(json) { 
+    let arr = JSON.parse(json);
+    let outputArr = ["<table>"];
 
-let arr = JSON.parse(json);
-let outputArr = ['<table>'];
+    outputArr.push(makeKeyRow(arr));
+    arr.forEach((obj) => outputArr.push(makeValueRow(obj)));
 
-outputArr.push(makeKeyRow(arr))
+    outputArr.push("</table>");
 
+    function makeKeyRow(arr) {
+        let keys = Object.keys(arr[0]);
+        let header = keys.map(k => `<th>${escapeHtml(k.trim())}</th>`).join("");
+        return `   <tr>${header}</tr>`;
+    }
 
+    function makeValueRow(obj){ 
+        let values = Object.values(obj);
+        let row = values.map(v => `<td>${escapeHtml(v)}</td>`).join("");
+        return `   <tr>${row}</tr>`;
+    }
 
-function makeKeyRow(arr){
-
-    let keys = Object.entries(arr[0]);
-    console.table(keys);
-
+    function escapeHtml(value) { 
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+    console.log(outputArr.join('\n'));
 }
 
-}
+jsonToHtmlTable(
+    `[{"Name":"Stamat",
+    "Score":5.5},
+   {"Name":"Rumen",
+    "Score":6}]`
+)
