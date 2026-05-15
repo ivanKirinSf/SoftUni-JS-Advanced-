@@ -13,25 +13,3 @@ function jsonToHtmlTable(json) {
         return `   <tr>${header}</tr>`;
     }
 
-    function makeValueRow(obj){ 
-        let values = Object.values(obj);
-        let row = values.map(v => `<td>${escapeHtml(v)}</td>`).join("");
-        return `   <tr>${row}</tr>`;
-    }
-
-    function escapeHtml(value) { 
-        return String(value)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;");
-    }
-    console.log(outputArr.join('\n'));
-}
-
-jsonToHtmlTable(
-    `[{"Name":"Stamat",
-    "Score":5.5},
-   {"Name":"Rumen",
-    "Score":6}]`
-)
