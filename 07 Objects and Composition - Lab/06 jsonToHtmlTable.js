@@ -13,3 +13,8 @@ function jsonToHtmlTable(json) {
         return `   <tr>${header}</tr>`;
     }
 
+    function makeValueRow(obj){ 
+        let values = Object.values(obj);
+        let row = values.map(v => `<td>${escapeHtml(v)}</td>`).join("");
+        return `   <tr>${row}</tr>`;
+    }
