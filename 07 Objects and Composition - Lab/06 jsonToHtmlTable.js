@@ -1,15 +1,20 @@
 function jsonToHtmlTable(json){
 
-   let arr = JSON.parse(json);
+let arr = JSON.parse(json);
 
-   let outputArr = ("<table>");
+let outputArr = ["<table>"];
 
-   outputArr.push(makeKeyArr(arr));
+outputArr.push(makeKeyRow(arr));
 
-   function makeKeyArr(arr){
+function makeKeyRow(arr){
 
     let keys = Object.keys(arr[0]);
 
-    console.log(keys);
+    let header = keys.map( k => `<th>${k.trim()}</th>`).join("");
 
-   }
+    return header;
+}
+
+console.log(outputArr)
+
+} 
