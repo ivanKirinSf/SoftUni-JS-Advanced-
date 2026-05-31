@@ -4,38 +4,33 @@ let arr = JSON.parse(json);
 
 let outputArr = [`<table>`];
 
-outputArr.push(makeKeyRow(arr));
-arr.forEach( obj => makeValueRow(arr));
+outputArr.push(makeKeyArr(arr));
 
-outputArr.push([`</table>`]);
-
-function makeKeyRow(arr){
+function makeKeyArr(arr){
 
     let keys = Object.keys(arr[0]);
-    let header = keys.map( k => outputArr.push(`<th>${escapeHtml(k.trim())}</th>`)).join("");
-    return `<tr>${header}</tr>`
+
+    let header = keys.map( k => `<th>${escapeHtml(k.trim())}</th>`).join("")
+
+    console.log(header)
 }
 
-function makeValueRow(arr){
+function makeValueArr(arr){
 
-let values = Object.values(arr[1]);
+    let values = Object.values(arr[1]);
 
-let row = values.map(v => outputArr.push(`<td>${escapeHtml(v)}</td>`)).join("");
+    let str = values.map(v => `<th>${v.trim()}</th>`).join("")
 
-return `<tr>${row}</tr>`;
-
+    console.log(value)
 }
 
 function escapeHtml(value){
-
-    return String(value)
-    .replace(/</g, `&lt`)
-    .replace(/>/g, `&gt`)
-    .replace(/&/g, `&amp`)
-    .replace(/"/g, `&quot`)
-
+    return 
+    String(value)
+    .replace(/`<`/g, &lt)
+    .replace(/`>`/g, &gt)
+    .replace(/`&`/g, &amp)
+    .replace(/`&`/g, &quot)
 }
-
-console.log(outputArr.join(`\n`))
 
 } 
