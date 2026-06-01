@@ -2,35 +2,42 @@ function jsonToHtmlTable(json){
 
 let arr = JSON.parse(json);
 
-let outputArr = [`<table>`];
+let outputArr = ["<table>"];
 
-outputArr.push(makeKeyArr(arr));
+outputArr.push(makeKeyRow(arr));
+arr.forEach((obj) => {outputArr.push(makeValueRow(obj))});
 
-function makeKeyArr(arr){
+function makeKeyRow(arr){
 
     let keys = Object.keys(arr[0]);
 
-    let header = keys.map( k => `<th>${escapeHtml(k.trim())}</th>`).join("")
+    let header = keys.map(k => `<th>${escapeHtml(k.trim())}</th>`);
 
-    console.log(header)
+    return `<tr>${header}</tr>`;
+
 }
 
-function makeValueArr(arr){
+function makeValueRow(obj){
 
-    let values = Object.values(arr[1]);
+    let values = Object.values(obj);
 
-    let str = values.map(v => `<th>${v.trim()}</th>`).join("")
+    let str = values.map(v => `<td>${escapeHtml(v)}</td>`);
 
-    console.log(value)
+    return `<tr>${str}</tr>`;
+
 }
 
 function escapeHtml(value){
-    return 
-    String(value)
-    .replace(/`<`/g, &lt)
-    .replace(/`>`/g, &gt)
-    .replace(/`&`/g, &amp)
-    .replace(/`&`/g, &quot)
+
+    return String(value)
+    .repeat(/</g, `&lt`)
+    .repeat(/>/g, `&gt`)
+    .repeat(/&/g, `&amp`)
+    .repeat(/"/g, `&quot`)
+
 }
+
+console.log(outputArr).join(`/n`)
+
 
 } 
