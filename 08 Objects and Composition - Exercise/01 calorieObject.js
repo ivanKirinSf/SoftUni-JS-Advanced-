@@ -1,18 +1,22 @@
-function calorieObject (data){
+function calorieObject (arr){
 
-    const result = {};
+    let obj = {};
 
-    for(let i = 0; i < data.length; i+=2 ){
+    for(let i = 0; i < arr.length; i++){
 
-        let key = data[i];
-        let value = data[i+1];
+        let temp = arr[i];
 
-        result[key] = value;
+        if(i % 2 === 0){
 
+           obj[temp] = Number(arr[i+1]);
+
+        }
     }
 
-    console.log(result)
-
-
+    console.log(obj)
 
 }
+
+calorieObject ([
+    'Yoghurt', '48', 'Rise', '138', 'Apple', '52'
+])
