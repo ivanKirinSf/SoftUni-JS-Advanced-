@@ -1,18 +1,18 @@
-let constructionCrew =
-    { weight: 80,
+const worker = {
+    weight: 80,
   experience: 1,
   levelOfHydrated: 0,
-  dizziness: true }
-
-
-if (constructionCrew.dizziness === true){
-
-let drink = Number(constructionCrew.weight)*0.1*Number(constructionCrew.experience);
-
-constructionCrew.levelOfHydrated += drink;
-
-constructionCrew.dizziness = false;
-
+  dizziness: true 
 }
 
-return console.log(constructionCrew)
+if(worker.dizziness){
+
+    let water = worker.weight*worker.experience*0.1;
+
+    worker.levelOfHydrated += water;
+
+    worker.dizziness = false
+}
+
+console.log(worker)
+
