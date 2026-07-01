@@ -1,15 +1,25 @@
-function constructionWorker(worker){
+function constructionCrew(worker){
 
-    if (worker.dizziness){
+    if(worker.dizziness){
 
-        let waterAmount = worker.weight*worker.experience*0.1;
+        let water = worker.weight*worker.experience*0.1;
 
-        worker.levelOfHydrated += waterAmount;
+        worker.levelOfHydrated += water;
 
-        worker.dizziness = false
+        worker.dizziness = false;
+
+        //console.log(worker.levelOfHydrated)
+
     }
 
     return worker
 
 }
 
+
+console.log(constructionCrew({ 
+  weight: 80,
+  experience: 1,
+  levelOfHydrated: 0,
+  dizziness: true 
+}))
