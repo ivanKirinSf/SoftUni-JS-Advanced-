@@ -1,68 +1,79 @@
-function carFactory(car){
+function carFactory(order){
 
-    const order = {};
+    let car = {};
 
-    order.model = car.model;
+    car.model = order.model;
 
-    let carPower = car.power;
+    let power = order.power;
 
-    if(carPower <= 90){
+    if(power <= 90){
 
-       order.engine = {};
+       car.engine = {
 
-       order.engine.power = 90;
-       order.engine.volume = 1800;
+        power : 90,
 
-    }else if(carPower <= 120){
+        volume : 1800
 
-        order.engine = {};
+       }
 
-        order.engine.power = 120;
-        order.engine.volume = 2400;
+    }else if(power <= 120){
 
-    }else if(carPower <= 200){
+        car.engine = {
 
-        order.engine = {};
+        power : 120,
 
-        order.engine.power = 200;
-        order.engine.volume = 3500;
+        volume : 2400
 
-    }
+       }
 
-    let carCarriage = car.carriage;
+    }else{
 
-    if(carCarriage = 'hatchback'){
+         car.engine = {
 
-        order.carriage = {};
+        power : 200,
 
-        order.carriage.type = carCarriage;
+        volume : 3500
 
-        order.carriage.color = car.color;
-
-    }else if(carCarriage = 'coupe'){
-
-        order.carriage = {};
-
-        order.carriage.type = carCarriage;
-
-        order.carriage.color = car.color;
+       }        
 
     }
 
-    let carWheels = car.wheelsize;
+    car.carriage = {
 
-    if( carWheels % 2 === 0 ){
+        type : order.carriage,
 
-        let size = carWheels - 1;
-
-        let arr = [];
-
-        arr.push(...Array(4).fill(size));
-
-        order.wheels = arr;        
+        color: order.color
 
     }
 
-    return console.log(JSON.stringify(order))
+    if(order.wheelsize % 2 === 0){
+
+        let size = Number(order.wheelsize) - 1;
+
+        let arrWheels = new Array(4).fill(size);
+
+        //arrWheels.push(size).fill(size, 0, 3);
+
+        car.wheels = arrWheels;
+
+    }else{
+
+        let size = Number(order.wheelsize);
+
+        let arrWheels = new Array(4).fill(size);
+
+        //arrWheels.push(size).fill(size, 0, 3);
+
+        car.wheels = arrWheels
+
+    }
+
+    return car   
 
 }
+
+carFactory({ model: 'Opel Vectra',
+  power: 110,
+  color: 'grey',
+  carriage: 'coupe',
+  wheelsize: 17 })
