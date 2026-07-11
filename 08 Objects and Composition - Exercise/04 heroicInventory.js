@@ -1,27 +1,37 @@
 function heroicInventory(input) {
 
-    let res = [];
+  let res = [];  
+
+  for(let el of input){
 
     let hero = {};
 
-    for(let el of input){
+    let temp = el.split(" / ");
 
-        let temp = el.split(' / ');
+    let heroName = temp.shift();
 
-        let name = temp.shift();
-        let level = temp.shift();
-        let itemsArr = temp.shift().split(', ');
+    let heroLevel = temp.shift();
 
-        hero.name = name;
-        hero.level = level;
+    hero.name = heroName;
 
-        itemsArr >= itemsArr ? itemsArr : [];
+    hero.level = Number(heroLevel);
 
-        hero.itemsArr
+    let heroItems = temp.shift();
 
-        console.log(hero);
+    heroItems = heroItems ? heroItems.split(", ") : [];
 
+    hero.items = heroItems;
 
-    }
+    res.push(hero);
+    
+    //console.table(hero);
+
+  }
+
+  return console.log(res);  
+
+  //console.log(JSON.stringify(res))
 
 }
+
+//console.log(JSON.stringify(heroicInventory))
