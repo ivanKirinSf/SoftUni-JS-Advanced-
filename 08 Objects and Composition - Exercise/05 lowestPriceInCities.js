@@ -1,78 +1,38 @@
-function carFactory(car){
+function lowestPriceInCities(data){
 
-    const order = {};
+    let res = [];
 
-    order.model = car.model;
+    let obj = {};
 
-    let carPower = car.power;
+   for(let el of data){
 
-    if(carPower <= 90){
+    if(!el.trim()){
 
-       order.engine = {};
-
-       order.engine.power = 90;
-       order.engine.volume = 1800;
-
-    }else if(carPower <= 120){
-
-        order.engine = {};
-
-        order.engine.power = 120;
-        order.engine.volume = 2400;
-
-    }else {
-
-        order.engine = {};
-
-        order.engine.power = 200;
-        order.engine.volume = 3500;
+        continue;
 
     }
 
-    let carCarriage = car.carriage;
+    let temp = el.split(" | ");
 
-    if(carCarriage === 'hatchback'){
+    let townName = temp.shift();
 
-        order.carriage = {};
+    let productName = temp.shift();
 
-        order.carriage.type = carCarriage;
+    let productPrice = Number(temp.shift());
 
-        order.carriage.color = car.color;
-
-    }else if(carCarriage === 'coupe'){
-
-        order.carriage = {};
-
-        order.carriage.type = carCarriage;
-
-        order.carriage.color = car.color;
-
+    if(obj.product === productName){
+        console.log("yes")
     }
+    obj.city = townName;
 
-    let carWheels = car.wheelsize;
+    obj.product = productName;
 
-    if( carWheels % 2 === 0 ){
+    obj.price = productPrice;
 
-        let size = carWheels - 1;
+    //console.log(obj)
 
-        let arr = [];
+   }
 
-        arr.push(...Array(4).fill(size));
 
-        order.wheels = arr;        
-
-    }else{
-
-        let size = carWheels
-
-        let arr = [];
-
-        arr.push(...Array(4).fill(size));
-
-        order.wheels = arr;          
-
-    }
-
-    return order
 
 }
