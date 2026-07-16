@@ -7,7 +7,6 @@ for(let el of info){
    let hero = {};
 
    if(!el.trim()){
-
       continue;
    }
 
@@ -15,23 +14,23 @@ for(let el of info){
 
    let heroName = temp.shift();
 
-   let heroLevel = temp.shift();
+   hero.name = heroName;
+
+   let heroLevel = Number(temp.shift());
+
+   hero.level = heroLevel;
 
    let heroItems = temp.shift();
 
-   heroItems = heroItems ? heroItems.split(", ") : heroItems;
+   heroItems = heroItems ? heroItems.split(", ") : [];
 
-   hero.name = heroName;
-
-   hero.level = Number(heroLevel);
-
-   hero.items = heroItems;
-
+   hero.items = heroItems; 
+   
    res.push(hero);
+   //console.log(hero);
 
-  //console.table(hero);
 }
 
-console.log(JSON.stringify(res));
+console.log(JSON.stringify(res))
 
 }
