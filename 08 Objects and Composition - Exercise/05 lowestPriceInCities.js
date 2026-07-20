@@ -1,38 +1,76 @@
-function lowestPriceInCities(data){
+function lowestPriceInTheCity(info){
 
-    let res = [];
+   let arr = [];
 
-    let obj = {};
+   let isValid = false;
 
-   for(let el of data){
+   let index = 0;
+   
 
-    if(!el.trim()){
+  for(let el of info){
 
-        continue;
+   let obj = {};
 
-    }
+        let temp = el.split(" | ");
 
-    let temp = el.split(" | ");
+        let town = temp.shift();
 
-    let townName = temp.shift();
+        let product = temp.shift();
 
-    let productName = temp.shift();
+        let price = Number(temp.shift());
 
-    let productPrice = Number(temp.shift());
+        obj.city = town;
 
-    if(obj.product === productName){
-        console.log("yes")
-    }
-    obj.city = townName;
+        obj.product = product;
 
-    obj.product = productName;
+        obj.price = price;
 
-    obj.price = productPrice;
+        if(arr.length === 0){
+         arr.push(obj);
 
-    //console.log(obj)
+         continue;
+        }
 
-   }
+        for(let el of arr){
 
+         if(product !== el.product){
+            isValid = true;
+            index++;
+         }else{
+            isValid = false;            
+            break;
+         }
+
+        }
+
+        if(isValid === true){
+
+         if(arr[index].price !== price){
+
+            arr.push(obj)                       
+
+         } 
+         
+        }else{
+
+         if(arr[index].price > price){
+
+            arr[index].price = price;
+            arr[index].city = town;            
+
+         }         
+          
+
+        }     
+      
+
+        //console.log(index)   
+
+        index = 0
+
+  }
+
+  console.table(arr);
 
 
 }
