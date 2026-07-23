@@ -1,76 +1,51 @@
 function lowestPriceInTheCity(info){
 
-   let arr = [];
+   let products = {};
 
-   let isValid = false;
+   for(let el of info){
 
-   let index = 0;
-   
+      let temp = el.split(" | ");
 
-  for(let el of info){
+      let town = temp.shift();
 
-   let obj = {};
+      let product = temp.shift();
 
-        let temp = el.split(" | ");
+      let price = Number(temp.shift());
 
-        let town = temp.shift();
 
-        let product = temp.shift();
+      if(!products.hasOwnProperty(product)){
 
-        let price = Number(temp.shift());
+         products[product] = {
 
-        obj.city = town;
+         city: town,
+         price: price
 
-        obj.product = product;
+      }
+      } else{
 
-        obj.price = price;
+         if(products[product].price > price){
 
-        if(arr.length === 0){
-         arr.push(obj);
+            products[product].price = price;
 
-         continue;
-        }
+            products[product].city = town;        
 
-        for(let el of arr){
-
-         if(product !== el.product){
-            isValid = true;
-            index++;
-         }else{
-            isValid = false;            
-            break;
          }
 
-        }
+      }
 
-        if(isValid === true){
+      }
 
-         if(arr[index].price !== price){
+      //console.log(product)   
 
-            arr.push(obj)                       
+  for(let line in products){
 
-         } 
-         
-        }else{
+   //let values = Object.values(line)
 
-         if(arr[index].price > price){
+   //console.log(`${line} -> ${line.[1]} ({${line.[2]}})`)
 
-            arr[index].price = price;
-            arr[index].city = town;            
+   let entries = Object.entries(line);
 
-         }         
-          
-
-        }     
-      
-
-        //console.log(index)   
-
-        index = 0
-
+   console.table(entries)
   }
-
-  console.table(arr);
-
 
 }
