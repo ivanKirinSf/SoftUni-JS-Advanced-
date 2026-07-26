@@ -1,42 +1,48 @@
-function lowestPriceInTheCity(info){
+function lowestPriceCities(info){
 
-let products = {};
+    let products = {};
 
-for(let el of info){
+    for(let line of info){
+        let temp = line.split("|");
 
-   let temp = el.split(" | ");
+        let city = temp.shift();
 
-   let city = temp.shift();
+        let productName = temp.shift();
 
-   let product = temp.shift();
+        let productPrice = Number(temp.shift());
 
-   let price = Number(temp.shift());
+        if(!products.hasOwnProperty(productName)){
 
-   if(!products.hasOwnProperty(product)){
+          products[productName] = {
 
-      products[product] = {
+            town: city,
+            price: productPrice
 
-         town: city,
-         price: price
+        }
 
-      }
+        }else{
 
-   }else {
+            if(products[productName].price > productPrice){
 
-      if(products[product].price > price){
+                products[productName].price = productPrice;
+                products[productName].town = city;
 
-         products[product].price = price;
-         products[product].town = city;
+            }        
 
-      }
+        }        
 
-   }
-   //console.log(price)
-}
+        //console.log(price);
 
-for(let line in products){
+    }
 
-      console.log(`${line} -> ${products[line].price} (${products[line].town})`);
+    //console.table(products);
 
-   }
+    for(const line in products){
+
+        
+
+        console.log(`${products[line]} -> ${products[line].price} (${products[line].town})`);
+
+    }
+
 }
