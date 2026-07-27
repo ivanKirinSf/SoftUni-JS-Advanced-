@@ -2,47 +2,54 @@ function lowestPriceCities(info){
 
     let products = {};
 
-    for(let line of info){
-        let temp = line.split("|");
+ for(let el of info){
 
-        let city = temp.shift();
+    let temp = el.split(" | ");
 
-        let productName = temp.shift();
+    let prodCity = temp.shift();
 
-        let productPrice = Number(temp.shift());
+    let proName = temp.shift();
 
-        if(!products.hasOwnProperty(productName)){
+    let proPrice = Number(temp.shift());
 
-          products[productName] = {
+    if(!products.hasOwnProperty(proName)){
 
-            town: city,
-            price: productPrice
+       products[proName] = {
+
+           town: prodCity,
+           price: proPrice
+
+       }
+
+    }else{
+
+        if(products[proName].price > proPrice){
+
+            products[proName].price = proPrice;
+
+            products[proName].town = prodCity;
 
         }
-
-        }else{
-
-            if(products[productName].price > productPrice){
-
-                products[productName].price = productPrice;
-                products[productName].town = city;
-
-            }        
-
-        }        
-
-        //console.log(price);
-
     }
 
-    //console.table(products);
+    //console.log(proPrice);
 
-    for(const line in products){
+ }   
 
-        
+ for(let line in products){
 
-        console.log(`${products[line]} -> ${products[line].price} (${products[line].town})`);
+console.log(`${line} -> ${products[line].price} (${products[line].town})`)
 
-    }
+ }
 
 }
+
+lowestPriceCities(
+['Sample Town | Sample Product | 1000',
+'Sample Town | Orange | 2',
+'Sample Town | Peach | 1',
+'Sofia | Orange | 3',
+'Sofia | Peach | 2',
+'New York | Sample Product | 1000.1',
+'New York | Burger | 10']
+)
