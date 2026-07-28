@@ -1,5 +1,7 @@
 function townsToJSON(info){
 
+  let arr = [];
+
     let obj = {};
 
     let txt = info.shift();
@@ -36,8 +38,19 @@ function townsToJSON(info){
 
     obj[col3] = Number(long);
 
-     console.log(JSON.stringify(obj));
+     arr.push(obj);
+
+     obj = {};
 
    }
 
+   console.log(JSON.stringify(arr))   
+
 }
+
+townsToJSON([
+'| Town | Latitude | Longitude |',
+'| Sofia | 42.696552 | 23.32601 |',
+'| Beijing | 39.913818 | 116.363625 |'
+]
+)
