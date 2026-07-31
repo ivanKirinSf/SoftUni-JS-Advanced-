@@ -2,30 +2,33 @@ function createSortedList(){
 
     let arr = [];
 
-    return {
+    return{
 
         add(el){
 
             arr.push(el);
+            arr.sort((a,b) => a-b);
 
         },
 
-        remove(num){
+        remove(index){
 
-            arr.splice(num,1);
+            if(index >= 0 && index < arr.length)
+            arr.splice(index, 1);
 
         },
 
         get(index){
 
-            arr[index];
+            return arr[index];
+
         },
 
-        get slice(){
+        get size(){
 
             return arr.length
+
         }
 
     }
-
 }
