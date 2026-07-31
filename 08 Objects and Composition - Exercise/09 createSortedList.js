@@ -1,19 +1,31 @@
-
 function createSortedList(){
 
-let arr = [];
+    let arr = [];
 
-return {
+    return {
 
-    add(num){
+        add(el){
 
-        arr.push(num)
-    },
+            arr.push(el);
 
-    get(num){
+        },
 
-        arr[num]
+        remove(num){
+
+            arr.splice(num,1);
+
+        },
+
+        get(index){
+
+            arr[index];
+        },
+
+        get slice(){
+
+            return arr.length
+        }
+
     }
-}
 
 }
