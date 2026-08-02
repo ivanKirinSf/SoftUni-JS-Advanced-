@@ -1,36 +1,31 @@
 function solve(){
 
+       return{
 
-    return{
+         mage(name){
 
-
-        mage(name){
-
-            heroName: name,
-            health: 100,
+            health: 100;
             mana: 100,
 
             cast(spell){
 
-                spellName: spell;
-                this.mana -= 1;
+               this.mana -= 1;
+               console.log(`${name} cast ${spell}`)
+            }
+         },
 
+         fighter(name){
+
+            health: 100,
+            stamina: 100,
+
+            fight(){
+               stamina -= 1;
+               console.log(`${name} slashes at the foe!`)
             }
 
-        },
+         }
 
-        fighter(name){
+       }
 
-           heroName: name,
-           health: 100,
-           stamina: 100,
-
-           fight(){
-
-            this.stamina -=1
-
-           }
-
-        }
-    }
 }
