@@ -1,33 +1,35 @@
 function createSortedList(){
 
-    let arr = [];
+let arr = [];
 
-    return {
+return{
 
-          add(el){
+add(el){
 
-            arr.push(el);
-            arr.sort((a,b) => a-b);
+    arr.push(el);
+    arr.sort((a,b) => a-b);
 
-          },
+},
 
-          remove(index){
+remove(index){
 
-            arr.splice(index, 1)
+    if(index >= 0 && index < arr.length)
+    arr.splice(index, 1);
 
-          },
+},
 
-          get(index){
+get(index){
 
-        return arr[index];
+    return arr[index];
 
-          }          
-    }
+},
 
-    get size(){
+get size(){
 
-            return arr.length
-            
-          }
-    
+    return arr.length;
+
+}
+
+}
+
 }
