@@ -1,59 +1,107 @@
 function janNotation(data){
 
-    let arr = data;
+let arr = data;
+let numA = 0;
+let numB = 0;
+let res = 0;
+let isValid = false;
 
-    let result = 0;
+while(arr.length > 1){
 
-    let operator = ""
+  i=0;
 
-    for(let i = 0; i < arr.length; i++){
+  for(let i = 0; i < arr.length; i++){
 
-       let res = typeof arr[i];
+    let temp = arr[i];
 
-       if(res === "string"){
+    if(temp === "+"){
 
-        operator = arr[i];
-    
-        }    
+      numA = Number(arr[i-2]);
+      numB = Number(arr[i-1]);
 
-        let num1 = Number(arr[i-1]);
-        
-        let num2 = Number(arr[i-2]);
+      res = numA + numB;
 
-        if(operator === "+"){
+      if(res){
 
-            result = num2 + num1;
+        arr.splice(i-2,3);
+        arr.splice(i-2,0,res);
 
-            arr.splice(i-2,3);
-            //console.log(arr)
-            arr.splice(i-2,1, result)
-        }else if(operator === "-"){
+      }
+    }else if(temp === "-"){
 
-            result = num2 - num1;
+      numA = Number(arr[i-2]);
+      numB = Number(arr[i-1]);
 
-            arr.splice(i-2,3);
-            arr.splice(i-2,1, result)
-        }else if(operator === "*"){
+      res = numA - numB;
 
-            result = num2*num1;
+      if(res){
 
-            arr.splice(i-2,3);
-            arr.splice(i-2,1, result)
-        }else if(operator === "/"){
+        arr.splice(i-2,3);
+        arr.splice(i-2,0,res);
 
-            result = num2/num1;
+      }
 
-            arr.splice(i-2,3);
-            arr.splice(i-2,1, result)
-        }
+    }else if(temp === "*"){
 
+      numA = Number(arr[i-2]);
+      numB = Number(arr[i-1]);
 
-       
-       
-       //console.log(res)
+      res = numA * numB;
 
+      if(res){
+
+        arr.splice(i-2,3);
+        arr.splice(i-2,0,res);
+
+      }
+
+    }else if(temp === "/"){
+
+      numA = Number(arr[i-2]);
+      numB = Number(arr[i-1]);
+
+      res = numA / numB;
+
+      if(res){
+
+        arr.splice(i-2,3);
+        arr.splice(i-2,0,res);
+
+      }
     }
+  }
 
-    console.log(arr)   
+  for(let el of arr){
+  let temp = el;
+
+  if(el === "+" || el ==="-" || el ==="*" | el === "/"){
+
+    isValid = true
+
+  }
+}
+if(isValid === false){
+  
+  break;
+}
 
 }
+
+if(isValid === false){
+
+  //console.log(arr.join(""))
+  console.log("Error: not enough operands!")
+  
+}else{
+
+console.log(arr.join(""))
+}
+}
+
+janNotation(
+  [
+  3,
+ 4,
+ '+'
+]
+)
