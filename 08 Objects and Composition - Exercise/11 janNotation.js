@@ -4,6 +4,8 @@ function janNotation(data){
 
     let result = 0;
 
+    let operator = ""
+
     for(let i = 0; i < arr.length; i++){
 
        let res = typeof arr[i];
@@ -11,6 +13,8 @@ function janNotation(data){
        if(res === "string"){
 
         operator = arr[i];
+    
+        }    
 
         let num1 = Number(arr[i-1]);
         
@@ -18,15 +22,33 @@ function janNotation(data){
 
         if(operator === "+"){
 
-            result = num1 + num2;
+            result = num2 + num1;
 
             arr.splice(i-2,3);
             //console.log(arr)
             arr.splice(i-2,1, result)
+        }else if(operator === "-"){
+
+            result = num2 - num1;
+
+            arr.splice(i-2,3);
+            arr.splice(i-2,1, result)
+        }else if(operator === "*"){
+
+            result = num2*num1;
+
+            arr.splice(i-2,3);
+            arr.splice(i-2,1, result)
+        }else if(operator === "/"){
+
+            result = num2/num1;
+
+            arr.splice(i-2,3);
+            arr.splice(i-2,1, result)
         }
 
 
-       }
+       
        
        //console.log(res)
 
