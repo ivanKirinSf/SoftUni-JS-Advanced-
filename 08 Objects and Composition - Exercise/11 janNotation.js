@@ -1,12 +1,8 @@
 function janNotation(data){
 
   let arr = [];
-  let operator = "false";
-  
-  let result = 0;
 
-
-obj = {
+let obj = {
 
   "+": (a,b) => a+b,
   "-": (a,b) => a-b,
@@ -15,48 +11,15 @@ obj = {
 
 }
 
-let index = 0;
-  while(data.length > 0){ 
-    
-    let el = data[index];
+for(let el of data){
 
-    if(Number(el)){
+  let type = el.typeof(el);
 
-      arr.push(el);
-      data.splice(index, 1)
-    }
-           
-      //let a = Number(data[index-1]);      
-      //let b = Number(data[index-2]);
-      //arr.push(a);
-      //arr.push(b);
-      //data.splice(index-1, 1);
-      //data.splice(index-2, 1);
+  if(type === 'number'){
 
-    
-    if(el === "+" || el === "-" || el === "*" || el === "/"){
+    arr.push(el);
 
-      operator = el;
-      data.splice(index, 1);    
-      
+  }
 
-      if(a, b){
-
-    result = obj[operator](a,b);
-    arr.push(result);
-
-     }
-
-    }
-
-    index ++
-
-  }  
-  
-  console.log(result)
-  console.log(data)
-  console.log(arr)
-
-   
-
+}
 }
