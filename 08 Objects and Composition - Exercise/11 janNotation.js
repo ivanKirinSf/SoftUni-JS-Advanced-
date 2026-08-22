@@ -1,49 +1,42 @@
-function janNotation(data){
+function solve(input) {
+    const operations = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+        '*': (a, b) => a * b,
+        '/': (a, b) => a / b
+    };
 
-let arr = [];
+    const stack = [];
 
-let obj = {
+    for (const element of input) {
+        if (typeof element === 'number') {
+            stack.push(element);
+        } else {
+            if (stack.length < 2) {
+                console.log('Error: not enough operands!');
+                return;
+            }
 
-"+": (a, b) => a+b,
-"-": (a, b) => a-b,
-"*": (a, b) => a*b,
-"/": (a, b) => a/b,
+            const second = stack.pop();
+            const first = stack.pop();
 
+            const result = operations[element](first, second);
+            stack.push(result);
+        }
+    }
+    
+    if (stack.length === 1) {
+        console.log(stack[0]);
+    } else {
+        console.log('Error: too many operands!');
+    }
 }
 
-for(let el of data){
 
-let type = typeof el;
-
-if(type === "number"){
-
-    arr.push(el);
-
-}else{
-
-if(arr.length < 2){
-
-    console.log("Error: not enough operands!");
-    return;
-}
-
-let num1 = arr.pop();
-let num2 = arr.pop();
-let res = obj[el](num2, num1);
-arr.push(res);
-
-}
-
-}
-
-if(arr.length === 1){
-
-console.log(arr[0]);
-
-}else{
-
-console.log("Error: too many operands!");
-
-}
-
-}
+janNotation([
+ 5,
+ 3,
+ 4,
+ '+'
+]
+)
