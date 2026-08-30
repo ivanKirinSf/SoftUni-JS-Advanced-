@@ -1,5 +1,3 @@
-
-
 document.getElementById(`e1`);
 
 console.log(document)
