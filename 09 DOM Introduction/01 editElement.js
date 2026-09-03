@@ -1,14 +1,15 @@
-document.getElementById(`e1`);
+document.referrenceById("e1");
 
-console.log(document)
+console.log(document);
 
+function editElement(reff, match, replacer){
 
+let textReff = reff.textContent();
 
-function editElement(ref, match, replacer) {
-   
-const content = ref.textContent;
-const matcher = new RegExp(match, 'g');
-const edited = content.replace(matcher, replacer);
-ref.textContent = edited;
+let match = RegEx(reff, g);
+
+let edited = match.replace(match, replacer);
+
+reff.textContent = edited;
 
 }
