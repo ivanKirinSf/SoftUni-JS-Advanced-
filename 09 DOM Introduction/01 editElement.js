@@ -2,14 +2,11 @@ document.getElementById('e1');
 
 console.log(document)
 
-function editElement(context, match, replacer){
+function editElement(data, match, replacer){
 
-    const reffText = context.textContent;
+    const reff = data.textContent;
     const matcher = new RegExp(match, 'g');
-    const edited = reffText.replace(match, replacer);
-    context.textContent = edited;
-
-
-
-
+    const edited = reff.replace(matcher, replacer);
+    data.textContent = edited;
+    
 }
