@@ -1,9 +1,15 @@
+document.getElementById('result');
+
+console.log(document);
+
 function extractText(){
 
-    let getItems = document.getElementById(id)
+let arr = Array.from(document.getElementsByTagName('id'));
 
-    let items = arrayOf(getItems);
+let text = arr.map(e => e.textContent);
 
-    let text = items.map(e => e.join(""));
+let output = document.getElementsById();
+
+output.value = text;
 
 }
