@@ -1,15 +1,11 @@
-document.getElementById('result');
-
-console.log(document);
-
 function extractText(){
 
-let arr = Array.from(document.getElementsByTagName('id'));
+    let arr = Array.from(document.getElementsByTagName('li'));
 
-let text = arr.map(e => e.textContent);
+    let text = arr.map(e => e.textContent);
 
-let output = document.getElementsById();
+    let output = document.getElementById('result');
 
-output.value = text;
+    output.value = text;
 
 }
