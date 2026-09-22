@@ -1,14 +1,8 @@
-function sumNumbers(){
+function calc(){
 
-  let n1 = document.getElementById("num1");
-
-  let n2 = document.getElementById("num2");
-
-  calc(n1, n2){
-
-    let res = Number(n1) + Number(n2);
-
-    return res
-  }
+    let num1 = document.getElementById('num1').value;
+    let num2 = document.getElementById('num2').value;
+    let sum = Number(num1) + Number(num2);
+    document.getElementById('sum').value = sum;
 
 }
