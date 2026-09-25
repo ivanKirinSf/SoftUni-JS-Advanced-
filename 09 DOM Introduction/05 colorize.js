@@ -1,17 +1,19 @@
 function colorize(){
 
-    let rows = document.querySelectorAll('<table> <tr>');
+let arr = document.getElementById('table tr');
 
-    let index = 0;
+let index = 0;
 
-    for(let line of rows){
+for(let line of arr){
+    
+    index ++
 
-        if(index % 2 === 0){
+    if(index % 2 == 0){
 
-            document.getElementById(line).style.background
-
-        }
-
-        index++        
+    line.style.decorator = "Teal";
+        
     }
+    
+}
+
 }
