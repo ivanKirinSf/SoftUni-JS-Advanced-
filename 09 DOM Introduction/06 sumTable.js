@@ -1,17 +1,17 @@
-function sumTable() {
+function sumTable(){
 
-   let arr = document.querySelectorAll('table tr');
+let arr = document.querySelectorAll('table tr');
 
-   let total = 0;
+let total = 0;
 
-   for(let i = 1; i < arr.length; i++){
+for(let i = 1; i < arr.length; i++){
 
-    let row = arr[i];
+    let col = arr[i].children;
+    let cost = col[col.length -1].textContent;
 
-    let cost = row[row.length-1].textContent;
+    total += Number(cost);
+}
 
-    total += cost;
-
-   }
+document.getElementById('sum').textContent = total;
 
 }
