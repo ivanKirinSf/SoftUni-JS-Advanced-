@@ -1,21 +1,20 @@
 function extract(content) {
 
-    let text = document.getElementById('id').textContent;
+let text = document.getElementById(elementId).textContent;
 
-    let regText = //\(([^)]+)\)/g;
+let regText = /\(([^)]+)\)/g;
 
-    let arr = [];
+let res = [];
 
+let match = regText.match(text);
 
-    let match = text.exec(regText)
+while(match){
 
-    while(match){
+    res.push(match[1]);
 
-       arr.push(match[1]);
+    match = regText.match(text);
+}
 
-
-    }
-
-    arr.join("")
+return res.join('; ')
 
 }
