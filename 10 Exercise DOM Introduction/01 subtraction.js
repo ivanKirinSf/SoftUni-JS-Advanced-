@@ -1,14 +1,10 @@
 function subtract() {
 
-    let firstInputRef = document.getElementById('firstNumber');
-    let secInputRef = document.getElementById('secondNumber');
-    let resultRef = document.getElementById('result');
+    let num1 = document.getElementById('firstNumber').value;
+    let num2 = document.getElementById('secondNumber').value;
 
-    let firstNum = Number(firstInputRef.value);
-    let secondNum = Number(secInputRef.value);
+    let res = num1 - num2;
 
-    let res = firstNum - secondNum;
-
-    resultRef.textContent = res;
+    return res;
 
 }
