@@ -9,34 +9,44 @@ function solve() {
   if(textCase === "Camel Case"){
 
     let splittedText = textRef.split(" ");
-    let word = ""
+    let word = "";
+    let newStr = [];
 
     for(let i = 1; i < splittedText.length; i+=2 ){
 
       word = splittedText[i];
 
-      let char = word[0];
+      let char = word[0].toUpperCase();
 
-      let code = char.charCodeAt(0);
+      let sliced = word.slice(1);
 
-      if(code >= 97 || code <= 122 ){
+      word = char + sliced;
+      
+      splittedText.splice(i, word);
 
+      //let code = char.charCodeAt(0);
 
-        let upText = char.toUpperCase();
+      //if(code >= 97 || code <= 122 ){
 
-        upText;
+        //let charUp = char.toUpperCase()
 
-        let sliced = word.substring(0, 1);
+        //let upText = char.toUpperCase();
 
-        let replaced = word.replace(char, upText)
+        
 
-      }
+        //let sliced = word.slice(0);
 
-      debugger;
+        //let replaced = charUp + word;
 
-    }
+        //console.log(replaced)
 
-    document.getElementById("result").textContent = word;
+      //}
+
+      //debugger;
+
+    }    
+
+    document.getElementById("result").textContent = splittedText.join("");
 
 
   }else{
