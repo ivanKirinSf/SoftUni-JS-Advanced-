@@ -1,59 +1,63 @@
-function solve() {
-  
-  let textRef = document.getElementById("text").value;
+function solve(a, b){
 
-  let textCase = document.getElementById("naming-convention").value;
+ let text = a.split(" ");
 
-  let resRef = document.getElementById("result");
+ let res = "";
 
-  if(textCase === "Camel Case"){
+ let final = "";
 
-    let splittedText = textRef.split(" ");
-    let word = "";
-    let newStr = [];
+ if(b !== "Camel Case" || b !== "Pascal Case" ){
 
-    for(let i = 1; i < splittedText.length; i+=2 ){
+ console.log("Error!");
 
-      word = splittedText[i];
+ }
 
-      let char = word[0].toUpperCase();
+ for(let i = 0; i < text.length; i++){
 
-      let sliced = word.slice(1);
+    if( b === "Camel Case"){
 
-      word = char + sliced;
-      
-      splittedText.splice(i, word);
+if(i % 2 !== 0){
 
-      //let code = char.charCodeAt(0);
+    let temp1 = text[i];
 
-      //if(code >= 97 || code <= 122 ){
+    let char = temp1.slice(0,1).toUpperCase();
 
-        //let charUp = char.toUpperCase()
+    let lastPart = temp1.slice(1);
 
-        //let upText = char.toUpperCase();
+    res = char + lastPart;
 
+    final += res;
+
+    }else{
+
+    let temp2 = text[i];
+
+    final += temp2  
+
+    }  
+
+    }else if(b === "Pascal Case"){
+
+        let temp3 = text[i].toLowerCase();
+
+        let char = temp3[0].toUpperCase();
+
+        let lastPart = temp3.slice(1);
+
+        res = char + lastPart;
+
+        final += res;
+
+        //console.log(res)
         
+    }
 
-        //let sliced = word.slice(0);
+    //console.log(word)
 
-        //let replaced = charUp + word;
+ }
 
-        //console.log(replaced)
-
-      //}
-
-      //debugger;
-
-    }    
-
-    document.getElementById("result").textContent = splittedText.join("");
-
-
-  }else{
-
-    document.getElementById("result").textContent = "Error!"
-
-  }
-
+ console.log(final)
 
 }
+
+solve("secOND eXamPLE", "Another Case")
