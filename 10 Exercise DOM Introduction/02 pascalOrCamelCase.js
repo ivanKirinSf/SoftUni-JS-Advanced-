@@ -6,34 +6,58 @@ function solve() {
 
   let resRef = document.getElementById("result");
 
-  if(textCase !== "Camel Case" || textCase !== "Pascal Case"){
+  let res = "";
 
-  document.getElementById("result").textContent = "Error!"
+  let final = "";
 
-  }
-
+    
   for(let i = 0; i < textRef.length; i++){
 
      if(textCase === "Camel Case"){
 
-          if(i % 2 === 0){
+          if(i % 2 !== 0){
 
             let temp1 = textRef[i];
 
-            let char = temp1.slice(0, 1).toUpperCase();
+            let char = temp1.slice(0, 1).toUpperCase();            
 
-            document.getElementById("result").textContent = char;
+            let lastPart = temp1.slice(1);
 
+            res = char + lastPart;
+
+            final += res
+
+            //document.getElementById("result").textContent = char;
+
+            //debugger
+
+          }else{
+           
+            let temp2 = textRef[i];
+
+            final += temp2;
           }  
+
+     }else if(textCase === "Pascal Case"){
+
+          let temp3 = textRef[i].toLowerCase();
+
+          let char = temp3.slice(0,1).toUpperCase();
+
+          let lastPart = temp3.slice(1);
+
+          res = char + lastPart;
+
+          final += res;          
+
+     }else{
+
+      final = "Error!";       
 
      }
 
+  }    
 
-
-  }
-
-  
-
-  //document.getElementById("result").textContent = textRef
+  document.getElementById("result").textContent = final  
 
 }
