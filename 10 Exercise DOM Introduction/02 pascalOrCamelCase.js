@@ -1,63 +1,32 @@
-function solve() {
-  
-  let textRef = document.getElementById("text").value.split(" ");
+function solve(){
 
-  let textCase = document.getElementById("naming-convention").value;
+  let textRef = document.getElementById("text").value;
+
+  let textConvRef = document.getElementById("naming-convention").value;
 
   let resRef = document.getElementById("result");
+  
+  if(textConvRef !== "Camel Case" || textConvRef !== "Pascal Case"){
 
-  let res = "";
+    resRef.textContent = "Error!";
 
-  let final = "";
+    //debugger
+
+    //return
+
+  }
+
+  let textArr = textRef.toLowerCase().split(" ");
+
+  for(let i = 0; i< textArr.length; i++){
 
     
-  for(let i = 0; i < textRef.length; i++){
 
-     if(textCase === "Camel Case"){
+  }
 
-          if(i % 2 !== 0){
 
-            let temp1 = textRef[i];
 
-            let char = temp1.slice(0, 1).toUpperCase();            
+  debugger
 
-            let lastPart = temp1.slice(1);
-
-            res = char + lastPart;
-
-            final += res
-
-            //document.getElementById("result").textContent = char;
-
-            //debugger
-
-          }else{
-           
-            let temp2 = textRef[i];
-
-            final += temp2;
-          }  
-
-     }else if(textCase === "Pascal Case"){
-
-          let temp3 = textRef[i].toLowerCase();
-
-          let char = temp3.slice(0,1).toUpperCase();
-
-          let lastPart = temp3.slice(1);
-
-          res = char + lastPart;
-
-          final += res;          
-
-     }else{
-
-      final = "Error!";       
-
-     }
-
-  }    
-
-  document.getElementById("result").textContent = final  
 
 }
