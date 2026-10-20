@@ -1,65 +1,53 @@
 function solve(){
 
-  let textRef = document.getElementById("text").value;
+    let textRef = document.getElementById("text").value;
+    let convRef = document.getElementById("naming-convention").value;
+    let resultRef = document.getElementById("result");
+    let fin = []
 
-  let textConvRef = document.getElementById("naming-convention").value;
+    let arrText = textRef.toLowerCase().split(" ");
 
-  let arrText = textRef.toLowerCase().split(" ");
+    if( convRef !== "Camel Case" && convRef !== "Pascal Case" ){
 
-  let word = "";
+     fin.push("Error!");
 
-  let res = document.getElementById("result")
+     resultRef.textContent = fin.join("");
 
-  let final = [];
+     return;
 
-  if(textConvRef !== "Camel Case" && textConvRef !== "Pascal Case"){
+    }
 
-       res.textContent = "Error!";
+    //resultRef.textContent = arrText;
 
-       return
+    for(let i = 0; i < arrText.length; i++){
 
-  }
+      let temp = arrText[i];
 
-  for(let i = 0; i < arrText.length; i++){
+      if(convRef === "Camel Case" && i == 0){
 
-    let temp = arrText[i];
-
-    if( textConvRef === "Camel Case"){
-
-      if(i === 0){
-
-        final.push(temp);
+        fin.push(temp);
 
         continue;
 
       }
 
-      let char = temp[0];
+      if(temp){
 
-      let lastPart = temp.slice(1);
+         let char = temp[0].toUpperCase();
 
-      word = char.toUpperCase() + lastPart;
+         let lastPart = temp.slice(1);
 
-      final.push(word);   
-      
-      //debugger
+         let word = char + lastPart;
 
-    } else if(textConvRef === "Pascal Case"){
+         fin.push(word);
 
-      let char = temp[0];
+         //debugger
 
-      let lastPart = temp.slice(1);
+         //resultRef.textContent = word;
 
-      word = char.toUpperCase() + lastPart;
+      }
 
-      final.push(word);           
+      resultRef.textContent = fin.join("");
 
     }
-
-  }
-
-  res.textContent = final.join("");
-
-  //debugger
-
 }
