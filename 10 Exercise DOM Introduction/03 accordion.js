@@ -1,13 +1,12 @@
-function toggle() {
-    
-    let textRef = document.getElementById("extra");
-    let buttonRef = document.querySelector("button");
+function toggle(){
 
-    if(buttonRef === "none" ){
+    let textReff = document.getElementById("extra");
+    let buttonReff = document.querySellector()
 
-        textRef.document.style = "block";
-        textRef.document.style = "less"
+    if( buttonReff === "more"){
+
+        buttonReff = "more"
+
 
     }
-
 }
