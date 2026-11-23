@@ -4,15 +4,16 @@ function toggle(){
 
     let buttonReff = document.querySelector(".button");
 
-    if(extraReff.display.style === "none"){
+    if(extraReff.style.display === "none"){
 
-        extraReff.display.style = "block";
-        buttonReff.display.style = "Less"
+        extraReff.style.display = "block";
+        buttonReff.textContent = "Less"
 
     }else{
 
-        extraReff.display.style = "block";
-        buttonReff.display.style = "Less";
+        extraReff.style.display = "none";
+        buttonReff.textContent = "More";
 
     }
+
 }
